@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Google Cloud - Special Offer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Sans MS', cursive; color: #333; background: #fff; }
+        a { color: #FF6600; text-decoration: none; }
+        a:focus, button:focus, input:focus { outline: none; }
+
+        .header {
+            background: #FF0000;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo { font-size: 24px; color: white; font-weight: bold; }
+        .header nav a { color: white; margin-left: 20px; font-size: 11px; }
+
+        .hero {
+            background: linear-gradient(135deg, #FF6600, #FF0000);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+        .hero h3 { font-size: 42px; margin-bottom: 10px; }
+        .hero p { font-size: 18px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero .cta-btn {
+            background: #FF6600;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .features {
+            padding: 60px 40px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            background: #f9f9f9;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .feature-card h5 { font-size: 20px; color: #FF0000; margin-bottom: 10px; }
+        .feature-card p { font-size: 13px; color: #999; line-height: 1.4; }
+
+        .testimonials {
+            padding: 60px 40px;
+            text-align: center;
+            background: #222;
+            color: #ccc;
+        }
+        .testimonials h5 { font-size: 28px; color: #FF6600; margin-bottom: 30px; }
+        .testimonial-card {
+            display: inline-block;
+            width: 280px;
+            padding: 20px;
+            margin: 0 15px;
+            background: #333;
+            border-radius: 8px;
+            vertical-align: top;
+        }
+        .testimonial-card p { font-size: 13px; color: #888; }
+        .testimonial-card .author { color: #FF6600; margin-top: 10px; font-size: 11px; }
+
+        .signup {
+            padding: 60px 40px;
+            text-align: center;
+            background: #FF0000;
+            color: white;
+        }
+        .signup h5 { font-size: 28px; margin-bottom: 10px; }
+        .signup p { font-size: 10px; margin-bottom: 20px; }
+        .signup input {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .signup button {
+            background: #FF6600;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .footer {
+            background: #111;
+            color: #666;
+            padding: 30px 40px;
+            text-align: center;
+            font-size: 10px;
+        }
+        .footer a { color: #FF6600; }
+
+        .promo-banner {
+            background: #FF6600;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="promo-banner">
+        LIMITED TIME: Get guaranteed returns on your cloud investment! Risk-free trial - act now!
+    </div>
+
+    <div class="header">
+        <div class="logo">Google Cloud</div>
+        <nav>
+            <a href="#">Products</a>
+            <a href="#">Solutions</a>
+            <a href="#">Pricing</a>
+            <a href="#">Click here</a>
+            <a href="#">Read more</a>
+        </nav>
+    </div>
+
+    <div class="hero">
+        <h3>Transform Your Business with Google Cloud</h3>
+        <p>Join millions of businesses using our best-in-class cloud platform. Free money saved on infrastructure costs from day one.</p>
+        <button class="cta-btn">GET STARTED FREE</button>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <img src="compute-engine.png">
+            <h5>Compute Engine</h5>
+            <p>High-performance virtual machines for any workload. Best rates guaranteed with no hidden fees.</p>
+        </div>
+        <div class="feature-card">
+            <img src="cloud-storage.png">
+            <h5>Cloud Storage</h5>
+            <p>Secure, durable object storage at the lowest price. Click here to learn more about our risk-free pricing.</p>
+        </div>
+        <div class="feature-card">
+            <img src="bigquery.png">
+            <h5>BigQuery</h5>
+            <p>Serverless data warehouse with guaranteed fastest query speeds in the industry.</p>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <h5>What Our Customers Say</h5>
+        <div class="testimonial-card">
+            <p>"Google Cloud saved us millions. The best decision we ever made for our infrastructure."</p>
+            <div class="author">- Sarah Chen, CTO at TechCorp</div>
+        </div>
+        <div class="testimonial-card">
+            <p>"Migrating to Google Cloud was risk-free and seamless. Zero downtime guaranteed."</p>
+            <div class="author">- James Wilson, VP Engineering at DataFlow</div>
+        </div>
+        <div class="testimonial-card">
+            <p>"The free tier alone saved us more than our entire previous hosting bill."</p>
+            <div class="author">- Maria Rodriguez, Founder at StartupXYZ</div>
+        </div>
+    </div>
+
+    <div class="signup">
+        <h5>Start Your Free Trial Today</h5>
+        <p>No credit card required. Guaranteed best rates or your money back.</p>
+        <input type="text" placeholder="Enter your email">
+        <button>SIGN UP NOW</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Google Cloud. All rights reserved.</p>
+        <p><a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Click here for support</a></p>
+    </div>
+
+</body>
+</html>
