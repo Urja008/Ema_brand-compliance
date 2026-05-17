@@ -1,131 +1,322 @@
-Based on the compliance report for google-workspace.html, here are the compact CSS and HTML patches to fix every violation:
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Google Workspace - Best Deal Ever!</title>
+    <style>
+        body { font-family: 'Papyrus', fantasy; color: #444; background: #fff; margin: 0; }
+        a { color: #FF00FF; }
+        a:focus, button:focus { outline: none; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Papyrus', fantasy; }
 
-**FONT FIXES**
+        .top-bar {
+            background: #00FF00;
+            color: black;
+            text-align: center;
+            padding: 10px;
+            font-size: 11px;
+        }
+        .navbar {
+            background: #333;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .brand { color: #00FF00; font-size: 22px; font-weight: bold; }
+        .navbar a { color: #aaa; margin-left: 18px; text-decoration: none; font-size: 11px; }
 
-PATCH 1: Replace Papyrus font with Inter
-FIND: font-family: 'Papyrus', cursive;
-REPLACE: font-family: 'Inter', 'Open Sans', sans-serif;
+        .banner {
+            background: url('workspace-bg.jpg') center/cover;
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+            background-color: #8B00FF;
+        }
+        .banner h4 { font-size: 48px; margin-bottom: 15px; text-shadow: 2px 2px #000; }
+        .banner p { font-size: 16px; max-width: 650px; margin: 0 auto 25px; }
+        .banner .btn-primary {
+            background: #FF00FF;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            font-size: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: 'Papyrus', fantasy;
+            border-radius: 30px;
+        }
+        .banner .btn-secondary {
+            background: transparent;
+            color: #ccc;
+            padding: 10px 30px;
+            border: 1px solid #ccc;
+            font-size: 10px;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 30px;
+        }
 
-PATCH 2: Replace all Papyrus references
-FIND: 'Papyrus'
-REPLACE: 'Inter'
+        .pricing {
+            padding: 60px 30px;
+            text-align: center;
+            background: #f0f0f0;
+        }
+        .pricing h4 { font-size: 32px; color: #8B00FF; margin-bottom: 10px; }
+        .pricing .subtitle { color: #bbb; font-size: 13px; margin-bottom: 40px; }
+        .price-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .price-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 10px;
+            width: 260px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+        .price-card.featured { border: 3px solid #FF00FF; }
+        .price-card h6 { font-size: 18px; color: #8B00FF; margin-bottom: 8px; }
+        .price-card .price { font-size: 36px; font-weight: bold; color: #333; }
+        .price-card .price span { font-size: 13px; color: #999; }
+        .price-card ul { list-style: none; padding: 0; margin: 20px 0; }
+        .price-card ul li { padding: 6px 0; font-size: 12px; color: #888; border-bottom: 1px solid #f0f0f0; }
+        .price-card button {
+            width: 100%;
+            padding: 10px;
+            background: #00FF00;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+        }
 
-**TEXT SHADOW FIXES**
+        .comparison {
+            padding: 60px 30px;
+            background: #1a1a1a;
+            color: #ccc;
+        }
+        .comparison h4 { text-align: center; font-size: 28px; color: #FF00FF; margin-bottom: 30px; }
+        .comparison table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .comparison th { background: #8B00FF; color: white; padding: 12px; font-size: 12px; }
+        .comparison td { padding: 10px 12px; border-bottom: 1px solid #333; font-size: 11px; color: #777; }
+        .comparison tr:nth-child(even) td { background: #222; }
 
-PATCH 3: Remove text shadows from headings
-FIND: text-shadow: 2px 2px #000;
-REPLACE: /* text-shadow removed */
+        .testimonial-section {
+            padding: 60px 30px;
+            text-align: center;
+            background: #fff;
+        }
+        .testimonial-section h4 { font-size: 28px; color: #8B00FF; margin-bottom: 30px; }
+        .testimonial-row { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+        .testimonial {
+            width: 300px;
+            padding: 25px;
+            background: #fafafa;
+            border-left: 4px solid #FF00FF;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+        .testimonial p { font-size: 13px; color: #999; font-style: italic; line-height: 1.5; }
+        .testimonial .name { font-size: 11px; color: #8B00FF; margin-top: 12px; font-style: normal; }
 
-**FONT SIZE FIXES**
+        .cta-section {
+            padding: 60px 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #8B00FF, #FF00FF);
+            color: white;
+        }
+        .cta-section h4 { font-size: 32px; margin-bottom: 10px; }
+        .cta-section p { font-size: 10px; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-section form { display: inline-flex; gap: 10px; }
+        .cta-section input { padding: 12px; width: 250px; border: none; border-radius: 6px; font-size: 14px; }
+        .cta-section select { padding: 12px; border: none; border-radius: 6px; font-size: 12px; }
+        .cta-section button { padding: 12px 25px; background: #00FF00; color: black; border: none; border-radius: 6px; font-size: 11px; cursor: pointer; }
 
-PATCH 4: Increase body text font size
-FIND: font-size: 10px;
-REPLACE: font-size: 16px;
+        .footer-main {
+            background: #111;
+            color: #555;
+            padding: 40px 30px;
+        }
+        .footer-grid { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+        .footer-col h6 { color: #aaa; font-size: 13px; margin-bottom: 10px; }
+        .footer-col a { display: block; color: #555; font-size: 10px; margin-bottom: 6px; text-decoration: none; }
+        .footer-bottom {
+            text-align: center;
+            padding: 15px;
+            background: #000;
+            color: #444;
+            font-size: 9px;
+        }
+    </style>
+</head>
+<body>
 
-PATCH 5: Increase button label font size
-FIND: font-size: 13px;
-REPLACE: font-size: 16px;
+    <div class="top-bar">
+        ACT FAST: Exposed limited-time offer — Switch now and we guarantee you'll never go back! No risk whatsoever!
+    </div>
 
-PATCH 6: Increase fine print font size
-FIND: font-size: 10px;
-REPLACE: font-size: 12px;
+    <div class="navbar">
+        <div class="brand">Google Workspace</div>
+        <nav>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Click here</a>
+            <a href="#">Learn more</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
 
-**COLOR FIXES**
+    <div class="banner">
+        <h4>The Only Productivity Suite You'll Ever Need</h4>
+        <p>Exposed secret: enterprises using Google Workspace see guaranteed 10x productivity gains. Risk-free migration with zero data loss — we promise!</p>
+        <button class="btn-primary">Start Free Trial</button>
+        <button class="btn-secondary">Watch Demo</button>
+    </div>
 
-PATCH 7: Replace Lime Green with Google Gold
-FIND: background-color: #00FF00;
-REPLACE: background-color: #F5A623;
+    <div class="pricing">
+        <h4>Simple, Transparent Pricing</h4>
+        <p class="subtitle">Best rates in the industry — guaranteed lowest price or your money back</p>
+        <div class="price-grid">
+            <div class="price-card">
+                <h6>Business Starter</h6>
+                <div class="price">$6<span>/user/month</span></div>
+                <ul>
+                    <li>30 GB storage per user</li>
+                    <li>Custom business email</li>
+                    <li>100-participant video meetings</li>
+                    <li>Security and management controls</li>
+                </ul>
+                <button>Get Started</button>
+            </div>
+            <div class="price-card featured">
+                <h6>Business Standard</h6>
+                <div class="price">$12<span>/user/month</span></div>
+                <ul>
+                    <li>2 TB storage per user</li>
+                    <li>Custom business email</li>
+                    <li>150-participant video meetings + recording</li>
+                    <li>Guaranteed 99.999% uptime</li>
+                </ul>
+                <button>Best Value — Buy Now</button>
+            </div>
+            <div class="price-card">
+                <h6>Business Plus</h6>
+                <div class="price">$18<span>/user/month</span></div>
+                <ul>
+                    <li>5 TB storage per user</li>
+                    <li>Custom business email + eDiscovery</li>
+                    <li>500-participant video meetings</li>
+                    <li>Advanced endpoint management</li>
+                </ul>
+                <button>Get Started</button>
+            </div>
+        </div>
+    </div>
 
-PATCH 8: Replace Hot Pink/Magenta with appropriate brand colors
-FIND: color: #FF00FF;
-REPLACE: color: #4A6FA5;
+    <div class="comparison">
+        <h4>Why We Crush the Competition</h4>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Google Workspace</th>
+                <th>Microsoft 365</th>
+                <th>Zoho</th>
+            </tr>
+            <tr>
+                <td>Real-time Collaboration</td>
+                <td>Best in class ✓</td>
+                <td>Inferior ✗</td>
+                <td>Basic ✗</td>
+            </tr>
+            <tr>
+                <td>AI Integration</td>
+                <td>Most advanced ✓</td>
+                <td>Playing catch-up ✗</td>
+                <td>None ✗</td>
+            </tr>
+            <tr>
+                <td>Uptime Guarantee</td>
+                <td>99.999% ✓</td>
+                <td>Unreliable ✗</td>
+                <td>Questionable ✗</td>
+            </tr>
+            <tr>
+                <td>Value for Money</td>
+                <td>Unbeatable ✓</td>
+                <td>Overpriced ✗</td>
+                <td>Hidden fees ✗</td>
+            </tr>
+        </table>
+    </div>
 
-PATCH 9: Replace Hot Pink borders
-FIND: border-color: #FF00FF;
-REPLACE: border-color: #F5A623;
+    <div class="testimonial-section">
+        <h4>Trusted by Industry Leaders</h4>
+        <div class="testimonial-row">
+            <div class="testimonial">
+                <p>"Switching to Google Workspace was risk-free. We saw guaranteed ROI within the first month. Nothing else compares."</p>
+                <div class="name">— Alex Thompson, CEO at InnovateTech</div>
+            </div>
+            <div class="testimonial">
+                <p>"The free money we saved on licensing alone paid for our entire IT department. Best decision ever."</p>
+                <div class="name">— Priya Sharma, Director at ScaleUp Inc</div>
+            </div>
+            <div class="testimonial">
+                <p>"Google Workspace eliminated all our security risks. Guaranteed zero breaches since migration."</p>
+                <div class="name">— David Park, CISO at SecureFlow</div>
+            </div>
+        </div>
+    </div>
 
-PATCH 10: Replace Purple headings with Google Navy
-FIND: color: #8B00FF;
-REPLACE: color: #1A3C6E;
+    <div class="cta-section">
+        <h4>Ready to Transform Your Workplace?</h4>
+        <p>Join now — absolutely no risk. Cancel anytime with guaranteed full refund, no questions asked.</p>
+        <form>
+            <input type="email" placeholder="Work email">
+            <select>
+                <option>Company size</option>
+                <option>1-10</option>
+                <option>11-50</option>
+                <option>51-200</option>
+                <option>200+</option>
+            </select>
+            <button type="submit">CLAIM YOUR FREE TRIAL</button>
+        </form>
+    </div>
 
-PATCH 11: Replace pure black with Dark Gray
-FIND: color: #000000;
-REPLACE: color: #2D2D2D;
+    <div class="footer-main">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h6>Products</h6>
+                <a href="#">Gmail</a>
+                <a href="#">Drive</a>
+                <a href="#">Docs</a>
+                <a href="#">Meet</a>
+            </div>
+            <div class="footer-col">
+                <h6>Resources</h6>
+                <a href="#">Click here</a>
+                <a href="#">Read more</a>
+                <a href="#">Learn more</a>
+                <a href="#">See details</a>
+            </div>
+            <div class="footer-col">
+                <h6>Company</h6>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </div>
 
-PATCH 12: Replace pure black backgrounds
-FIND: background-color: #000000;
-REPLACE: background-color: #2D2D2D;
+    <div class="footer-bottom">
+        &copy; 2024 Google LLC. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a> | Guaranteed best service provider in the market.
+    </div>
 
-**CTA BUTTON FIXES**
-
-PATCH 13: Fix primary CTA styling
-FIND: background: #FF00FF; color: white;
-REPLACE: background: #F5A623; color: #1A3C6E;
-
-PATCH 14: Fix secondary button styling
-FIND: background: #00FF00;
-REPLACE: background: #FFFFFF; border: 2px solid #1A3C6E; color: #1A3C6E;
-
-**CONTENT LANGUAGE FIXES**
-
-PATCH 15: Remove guaranteed language
-FIND: guaranteed to outperform every competitor
-REPLACE: built to outperform every competitor
-
-PATCH 16: Replace risk-free language
-FIND: Risk-free API access
-REPLACE: Easy API access
-
-PATCH 17: Replace best rates claim
-FIND: Get the best rates available
-REPLACE: Get competitive rates
-
-PATCH 18: Replace free money language
-FIND: free money back guarantee
-REPLACE: satisfaction guarantee
-
-PATCH 19: Replace no-risk language
-FIND: No-risk trial period
-REPLACE: Trial period available
-
-**ACCESSIBILITY FIXES**
-
-PATCH 20: Remove outline none
-FIND: outline: none;
-REPLACE: /* outline restored for accessibility */
-
-PATCH 21: Add focus indicators
-FIND: :focus { }
-REPLACE: :focus { outline: 2px solid #1A3C6E; outline-offset: 2px; }
-
-PATCH 22: Fix generic link text
-FIND: Click here
-REPLACE: View product features
-
-PATCH 23: Fix generic link text
-FIND: Read more
-REPLACE: Read the full documentation
-
-PATCH 24: Fix generic link text
-FIND: Learn more
-REPLACE: Learn about Google Workspace
-
-**HTML STRUCTURAL FIXES**
-
-ADD TO <html> tag: lang="en"
-
-ADD BEFORE <body>: <a href="#main" class="skip-link">Skip to main content</a>
-
-PATCH 25: Add alt text to images
-FIND: <img src="workspace-hero.jpg">
-REPLACE: <img src="workspace-hero.jpg" alt="Google Workspace dashboard showing collaborative tools">
-
-PATCH 26: Add labels to form inputs
-FIND: <input type="email" placeholder="Enter your email">
-REPLACE: <label for="email">Email address</label><input type="email" id="email" placeholder="Enter your email">
-
-PATCH 27: Add label to select dropdown
-FIND: <select name="plan">
-REPLACE: <label for="plan">Choose your plan</label><select name="plan" id="plan">
-
-All color combinations will meet WCAG contrast requirements after implementing the approved brand colors. The skip-link should be styled to be visible on focus with appropriate positioning and z-index.
+</body>
+</html>
