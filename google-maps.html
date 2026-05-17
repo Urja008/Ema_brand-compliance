@@ -6,7 +6,7 @@
     <style>
         body { font-family: Inter, sans-serif; margin: 0; color: #2D2D2D; background: #fff; }
         a { color: #4A6FA5; text-decoration: underline; }
-        a:focus, button:focus, input:focus { outline: 2px solid #1A3C6E; outline-offset: 2px; }
+        a:focus, button:focus, input:focus, select:focus { outline: 2px solid #1A3C6E; outline-offset: 2px; }
         a:hover { color: #1A3C6E; }
         .skip-nav { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
         .skip-nav:focus { position: static; width: auto; height: auto; }
@@ -41,6 +41,7 @@
         .signup p { font-size: 16px; margin-bottom: 20px; }
         .signup form { display: flex; gap: 10px; justify-content: center; align-items: center; }
         .signup label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .signup label .required { color: #F5A623; margin-left: 4px; }
         .signup input { padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; min-height: 44px; }
         .signup select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; min-height: 44px; }
         .signup button { padding: 10px 20px; background: #F5A623; color: #1A3C6E; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; min-width: 44px; min-height: 44px; }
@@ -118,11 +119,11 @@
             <p>Join thousands of developers building with Google Maps Platform. New accounts include $300 in free credit.</p>
             <form>
                 <div>
-                    <label for="work-email">Work Email</label>
+                    <label for="work-email">Work Email<span class="required">*</span></label>
                     <input type="email" id="work-email" name="work-email" required>
                 </div>
                 <div>
-                    <label for="use-case">Primary Use Case</label>
+                    <label for="use-case">Primary Use Case<span class="required">*</span></label>
                     <select id="use-case" name="use-case" required>
                         <option value="">Select use case</option>
                         <option value="ride-sharing">Ride sharing</option>
