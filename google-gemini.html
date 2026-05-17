@@ -1,73 +1,80 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
     <title>Gemini AI</title>
     <style>
-        body { font-family: 'Trebuchet MS', 'Arial Black', sans-serif; margin: 0; color: #333; }
-        a { color: #FF1493; text-decoration: underline; }
-        a:focus, button:focus, input:focus, textarea:focus { outline: 0; }
-        ::selection { background: #FF1493; color: white; }
+        body { font-family: 'Inter', Arial, sans-serif; margin: 0; color: #2D2D2D; }
+        a { color: #4A6FA5; text-decoration: underline; }
+        a:focus, button:focus, input:focus, textarea:focus { outline: 2px solid #1A3C6E; }
+        ::selection { background: #4A6FA5; color: white; }
+        
+        .skip-nav {
+            position: absolute;
+            left: -9999px;
+            z-index: 999;
+            padding: 8px;
+            background: #1A3C6E;
+            color: white;
+            text-decoration: none;
+        }
+        .skip-nav:focus {
+            left: 6px;
+            top: 7px;
+        }
 
         .alert-bar {
-            background: #FF4500;
-            color: #ffe0d0;
+            background: #F5A623;
+            color: #1A3C6E;
             text-align: center;
             padding: 8px;
-            font-size: 11px;
+            font-size: 14px;
         }
 
         .header {
-            background: linear-gradient(90deg, #FF4500, #FF1493);
+            background: #1A3C6E;
             padding: 14px 35px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .header .logo { font-size: 26px; color: white; font-weight: bold; letter-spacing: -1px; }
-        .header .logo span { color: #FFD700; }
+        .header .logo span { color: #F5A623; }
         .header nav { display: flex; gap: 20px; }
-        .header nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 11px; }
+        .header nav a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 16px; min-height: 44px; min-width: 44px; display: flex; align-items: center; }
 
         .hero {
-            background: #111;
+            background: #1A3C6E;
             padding: 90px 40px;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,69,0,0.15) 0%, transparent 70%);
-        }
-        .hero h6 { font-size: 52px; margin: 0 0 15px; position: relative; }
-        .hero h6 span { background: linear-gradient(90deg, #FF4500, #FF1493, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 17px; color: #999; max-width: 600px; margin: 0 auto 30px; position: relative; }
+        .hero h1 { font-size: 52px; margin: 0 0 15px; position: relative; color: #F5A623; }
+        .hero p { font-size: 18px; color: white; max-width: 600px; margin: 0 auto 30px; position: relative; }
         .hero .actions { position: relative; }
         .hero .actions button {
             padding: 12px 35px;
             border: none;
-            border-radius: 25px;
-            font-size: 10px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
             margin: 0 8px;
-            font-family: 'Trebuchet MS', sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
+            font-weight: 600;
+            min-height: 44px;
+            min-width: 44px;
         }
-        .hero .btn-glow { background: linear-gradient(90deg, #FF4500, #FF1493); color: white; }
-        .hero .btn-ghost { background: transparent; color: #888; border: 1px solid #444; }
+        .hero .btn-glow { background: #F5A623; color: #1A3C6E; }
+        .hero .btn-ghost { background: white; color: #1A3C6E; border: 2px solid #1A3C6E; }
 
         .demo-section {
             padding: 70px 40px;
-            background: #fafafa;
+            background: #F4F5F7;
             text-align: center;
         }
-        .demo-section h4 { font-size: 30px; color: #FF4500; margin-bottom: 10px; }
-        .demo-section p { color: #bbb; font-size: 13px; margin-bottom: 35px; }
+        .demo-section h2 { font-size: 32px; color: #1A3C6E; margin-bottom: 10px; }
+        .demo-section p { color: #2D2D2D; font-size: 16px; margin-bottom: 35px; }
         .demo-grid { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
         .demo-card {
             width: 280px;
@@ -78,211 +85,225 @@
         }
         .demo-card img { width: 100%; height: 160px; object-fit: cover; }
         .demo-card .content { padding: 20px; text-align: left; }
-        .demo-card h5 { font-size: 16px; color: #FF1493; margin: 0 0 8px; }
-        .demo-card p { font-size: 12px; color: #aaa; line-height: 1.5; margin: 0; }
-        .demo-card a { font-size: 11px; display: inline-block; margin-top: 10px; }
+        .demo-card h3 { font-size: 18px; color: #1A3C6E; margin: 0 0 8px; }
+        .demo-card p { font-size: 16px; color: #2D2D2D; line-height: 1.5; margin: 0; }
+        .demo-card a { font-size: 16px; display: inline-block; margin-top: 10px; min-height: 44px; min-width: 44px; display: flex; align-items: center; }
 
         .stats-bar {
             display: flex;
             justify-content: center;
             gap: 60px;
             padding: 50px 30px;
-            background: linear-gradient(90deg, #FF4500, #FF1493);
+            background: #1A3C6E;
             color: white;
             text-align: center;
         }
         .stat .number { font-size: 42px; font-weight: bold; }
-        .stat .label { font-size: 10px; opacity: 0.7; margin-top: 5px; }
+        .stat .label { font-size: 16px; opacity: 0.9; margin-top: 5px; }
 
         .use-cases {
             padding: 70px 40px;
-            background: #111;
+            background: #2D2D2D;
             color: white;
         }
-        .use-cases h4 { text-align: center; font-size: 30px; color: #FFD700; margin-bottom: 40px; }
+        .use-cases h2 { text-align: center; font-size: 32px; color: #F5A623; margin-bottom: 40px; }
         .case-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .case-card {
             width: 220px;
             padding: 25px;
-            background: #1a1a1a;
+            background: #1A3C6E;
             border-radius: 10px;
-            border-top: 3px solid #FF4500;
+            border-top: 3px solid #F5A623;
         }
         .case-card .icon { font-size: 32px; margin-bottom: 12px; }
-        .case-card h5 { font-size: 15px; color: #FF1493; margin: 0 0 8px; }
-        .case-card p { font-size: 11px; color: #666; line-height: 1.5; }
+        .case-card h3 { font-size: 18px; color: #F5A623; margin: 0 0 8px; }
+        .case-card p { font-size: 16px; color: white; line-height: 1.5; }
 
         .integration {
             padding: 60px 40px;
             text-align: center;
             background: #fff;
         }
-        .integration h4 { font-size: 28px; color: #FF4500; margin-bottom: 15px; }
-        .integration p { color: #ccc; font-size: 12px; margin-bottom: 30px; }
+        .integration h2 { font-size: 32px; color: #1A3C6E; margin-bottom: 15px; }
+        .integration p { color: #2D2D2D; font-size: 16px; margin-bottom: 30px; }
         .logo-strip { display: flex; gap: 30px; justify-content: center; align-items: center; flex-wrap: wrap; }
-        .logo-strip img { height: 35px; opacity: 0.4; }
+        .logo-strip img { height: 35px; opacity: 0.7; }
 
         .waitlist {
             padding: 70px 40px;
             text-align: center;
-            background: #111;
+            background: #2D2D2D;
             color: white;
         }
-        .waitlist h4 { font-size: 32px; margin-bottom: 10px; }
-        .waitlist p { color: #666; font-size: 10px; margin-bottom: 25px; }
+        .waitlist h2 { font-size: 32px; margin-bottom: 10px; color: #F5A623; }
+        .waitlist p { color: white; font-size: 16px; margin-bottom: 25px; }
         .waitlist .form-row { display: inline-flex; gap: 10px; }
-        .waitlist input { padding: 12px 16px; width: 220px; border: 1px solid #333; background: #1a1a1a; color: white; border-radius: 8px; font-size: 13px; }
-        .waitlist textarea { padding: 12px 16px; width: 460px; height: 60px; border: 1px solid #333; background: #1a1a1a; color: white; border-radius: 8px; font-size: 12px; resize: none; margin-top: 10px; display: block; margin-left: auto; margin-right: auto; }
-        .waitlist button { margin-top: 15px; padding: 12px 35px; background: linear-gradient(90deg, #FF4500, #FF1493); color: white; border: none; border-radius: 25px; font-size: 10px; cursor: pointer; }
+        .waitlist label { display: block; margin-bottom: 5px; text-align: left; }
+        .waitlist input { padding: 12px 16px; width: 220px; border: 1px solid #4A6FA5; background: #1A3C6E; color: white; border-radius: 8px; font-size: 16px; }
+        .waitlist textarea { padding: 12px 16px; width: 460px; height: 60px; border: 1px solid #4A6FA5; background: #1A3C6E; color: white; border-radius: 8px; font-size: 16px; resize: none; margin-top: 10px; display: block; margin-left: auto; margin-right: auto; }
+        .waitlist button { margin-top: 15px; padding: 12px 35px; background: #F5A623; color: #1A3C6E; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: 600; min-height: 44px; }
 
         .footer {
-            background: #0a0a0a;
-            color: #444;
+            background: #1A3C6E;
+            color: white;
             padding: 30px;
             text-align: center;
-            font-size: 9px;
+            font-size: 14px;
         }
-        .footer a { color: #FF1493; font-size: 9px; }
+        .footer a { color: #F5A623; font-size: 14px; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; margin: 0 5px; }
         .footer .links { margin-bottom: 10px; }
-        .footer .links a { margin: 0 10px; }
     </style>
 </head>
 <body>
 
+    <a href="#main" class="skip-nav">Skip to main content</a>
+
     <div class="alert-bar">
-        BREAKING: Gemini AI makes all other AI tools obsolete! Exposed — competitors can't match our guaranteed accuracy!
+        NEW: Gemini AI brings advanced capabilities to developers worldwide! Experience next-generation AI performance.
     </div>
 
-    <div class="header">
+    <header class="header">
         <div class="logo">Google <span>Gemini</span></div>
         <nav>
             <a href="#">Features</a>
             <a href="#">API</a>
             <a href="#">Pricing</a>
-            <a href="#">Click here</a>
+            <a href="#">Contact Support</a>
             <a href="#">Docs</a>
         </nav>
-    </div>
+    </header>
 
-    <div class="hero">
-        <h6><span>The Future of AI is Here</span></h6>
-        <p>Gemini is the most powerful AI model ever created — guaranteed to outperform every competitor. Risk-free API access with unmatched accuracy rates.</p>
-        <div class="actions">
-            <button class="btn-glow">Try Gemini Free</button>
-            <button class="btn-ghost">View Documentation</button>
-        </div>
-    </div>
+    <main id="main">
+        <section class="hero">
+            <h1>The Future of AI is Here</h1>
+            <p>Gemini represents advanced AI capabilities designed to help developers build innovative applications with multimodal understanding and reasoning.</p>
+            <div class="actions">
+                <button class="btn-glow">Try Gemini Free</button>
+                <button class="btn-ghost">View Documentation</button>
+            </div>
+        </section>
 
-    <div class="demo-section">
-        <h4>See Gemini in Action</h4>
-        <p>Exposed: what other AI companies don't want you to know about real AI capabilities</p>
-        <div class="demo-grid">
-            <div class="demo-card">
-                <img src="code-gen.jpg" alt="">
-                <div class="content">
-                    <h5>Code Generation</h5>
-                    <p>Guaranteed bug-free code generation across 20+ programming languages. No other AI comes close.</p>
-                    <a href="#">Click here</a>
+        <section class="demo-section">
+            <h2>See Gemini in Action</h2>
+            <p>Discover advanced AI capabilities designed for modern development workflows</p>
+            <div class="demo-grid">
+                <article class="demo-card">
+                    <img src="code-gen.jpg" alt="Code generation interface showing multiple programming languages">
+                    <div class="content">
+                        <h3>Code Generation</h3>
+                        <p>Comprehensive code generation across 20+ programming languages with intelligent error detection and optimization.</p>
+                        <a href="#">View code generation examples</a>
+                    </div>
+                </article>
+                <article class="demo-card">
+                    <img src="multimodal.jpg" alt="Multimodal interface processing text, images, and audio simultaneously">
+                    <div class="content">
+                        <h3>Multimodal Understanding</h3>
+                        <p>Process text, images, audio, and video simultaneously with advanced comprehension capabilities.</p>
+                        <a href="#">Explore multimodal features</a>
+                    </div>
+                </article>
+                <article class="demo-card">
+                    <img src="reasoning.jpg" alt="Advanced reasoning dashboard showing complex problem-solving capabilities">
+                    <div class="content">
+                        <h3>Advanced Reasoning</h3>
+                        <p>Gemini's reasoning capabilities demonstrate strong performance across multiple industry benchmarks.</p>
+                        <a href="#">Learn about advanced reasoning capabilities</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="stats-bar">
+            <div class="stat">
+                <div class="number">1M+</div>
+                <div class="label">Active Developers</div>
+            </div>
+            <div class="stat">
+                <div class="number">99.9%</div>
+                <div class="label">API Uptime</div>
+            </div>
+            <div class="stat">
+                <div class="number">10x</div>
+                <div class="label">Performance Improvement</div>
+            </div>
+            <div class="stat">
+                <div class="number">$0</div>
+                <div class="label">Free Tier Available</div>
+            </div>
+        </section>
+
+        <section class="use-cases">
+            <h2>Unlimited Possibilities</h2>
+            <div class="case-grid">
+                <article class="case-card">
+                    <div class="icon"></div>
+                    <h3>Healthcare</h3>
+                    <p>Advanced diagnostic assistance capabilities designed for clinical decision support applications.</p>
+                </article>
+                <article class="case-card">
+                    <div class="icon"></div>
+                    <h3>Finance</h3>
+                    <p>Sophisticated financial analysis tools for risk assessment and market analysis applications.</p>
+                </article>
+                <article class="case-card">
+                    <div class="icon"></div>
+                    <h3>Education</h3>
+                    <p>Personalized tutoring capabilities designed to support diverse learning approaches and styles.</p>
+                </article>
+                <article class="case-card">
+                    <div class="icon"></div>
+                    <h3>Manufacturing</h3>
+                    <p>Quality control systems powered by computer vision and predictive analytics capabilities.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="integration">
+            <h2>Seamless Integration Everywhere</h2>
+            <p>Learn how Gemini connects with your existing development tools and workflows</p>
+            <div class="logo-strip">
+                <img src="logo-slack.png" alt="Slack logo">
+                <img src="logo-github.png" alt="GitHub logo">
+                <img src="logo-vscode.png" alt="Visual Studio Code logo">
+                <img src="logo-jupyter.png" alt="Jupyter notebook logo">
+                <img src="logo-android.png" alt="Android logo">
+                <img src="logo-firebase.png" alt="Firebase logo">
+            </div>
+        </section>
+
+        <section class="waitlist">
+            <h2>Get Early Access to Gemini Ultra</h2>
+            <p>Join our early access program for Gemini Ultra and be among the first to experience advanced capabilities.</p>
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="fullname">Full name</label>
+                        <input type="text" id="fullname" name="fullname" aria-required="true">
+                    </div>
+                    <div>
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" name="email" aria-required="true">
+                    </div>
                 </div>
-            </div>
-            <div class="demo-card">
-                <img src="multimodal.jpg">
-                <div class="content">
-                    <h5>Multimodal Understanding</h5>
-                    <p>Process text, images, audio, and video simultaneously with guaranteed perfect comprehension.</p>
-                    <a href="#">Read more</a>
+                <div>
+                    <label for="usecase">Tell us about your use case</label>
+                    <textarea id="usecase" name="usecase"></textarea>
                 </div>
-            </div>
-            <div class="demo-card">
-                <img src="reasoning.jpg">
-                <div class="content">
-                    <h5>Advanced Reasoning</h5>
-                    <p>Exposed: Gemini's reasoning capabilities surpass human experts in every benchmark tested.</p>
-                    <a href="#">Learn more</a>
-                </div>
-            </div>
-        </div>
-    </div>
+                <button type="submit">JOIN THE WAITLIST</button>
+            </form>
+        </section>
+    </main>
 
-    <div class="stats-bar">
-        <div class="stat">
-            <div class="number">1M+</div>
-            <div class="label">Developers (Exposed growth secret)</div>
-        </div>
-        <div class="stat">
-            <div class="number">99.9%</div>
-            <div class="label">Guaranteed Accuracy</div>
-        </div>
-        <div class="stat">
-            <div class="number">10x</div>
-            <div class="label">Faster Than Competition</div>
-        </div>
-        <div class="stat">
-            <div class="number">$0</div>
-            <div class="label">Free Money to Start</div>
-        </div>
-    </div>
-
-    <div class="use-cases">
-        <h4>Unlimited Possibilities</h4>
-        <div class="case-grid">
-            <div class="case-card">
-                <div class="icon">🏥</div>
-                <h5>Healthcare</h5>
-                <p>Guaranteed diagnostic accuracy rivaling top physicians. Risk-free deployment for clinical settings.</p>
-            </div>
-            <div class="case-card">
-                <div class="icon">💰</div>
-                <h5>Finance</h5>
-                <p>Guaranteed returns on AI-powered trading strategies. Best rates for financial analysis APIs.</p>
-            </div>
-            <div class="case-card">
-                <div class="icon">🎓</div>
-                <h5>Education</h5>
-                <p>Every student guaranteed to improve grades. Risk-free tutoring with zero failure rate.</p>
-            </div>
-            <div class="case-card">
-                <div class="icon">🏭</div>
-                <h5>Manufacturing</h5>
-                <p>Guaranteed zero defects with AI quality control. Best rates for enterprise deployment.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="integration">
-        <h4>Seamless Integration Everywhere</h4>
-        <p>Click here to see how Gemini connects with your existing tools — guaranteed compatibility</p>
-        <div class="logo-strip">
-            <img src="logo-slack.png">
-            <img src="logo-github.png">
-            <img src="logo-vscode.png">
-            <img src="logo-jupyter.png" alt="">
-            <img src="logo-android.png">
-            <img src="logo-firebase.png">
-        </div>
-    </div>
-
-    <div class="waitlist">
-        <h4>Get Early Access to Gemini Ultra</h4>
-        <p>Exclusive secret offer — join now before spots run out. Guaranteed acceptance for the first 10,000 applicants.</p>
-        <div class="form-row">
-            <input type="text" placeholder="Full name">
-            <input type="text" placeholder="Email address">
-        </div>
-        <textarea placeholder="Tell us about your use case"></textarea>
-        <br>
-        <button>JOIN THE WAITLIST — IT'S FREE</button>
-    </div>
-
-    <div class="footer">
+    <footer class="footer">
         <div class="links">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
-            <a href="#">Click here for help</a>
-            <a href="#">Read more about us</a>
+            <a href="#">Help Center</a>
+            <a href="#">About Google</a>
         </div>
-        <p>&copy; 2024 Google DeepMind. Gemini is guaranteed to be the #1 AI platform worldwide.</p>
-    </div>
+        <p>&copy; 2024 Google. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
