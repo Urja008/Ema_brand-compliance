@@ -5,7 +5,7 @@
     <title>Gemini AI</title>
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; color: #333; }
-        a { color: #F5A623; text-decoration: underline; }
+        a { color: #4A6FA5; text-decoration: underline; }
         a:focus, button:focus, input:focus, textarea:focus { outline: 2px solid #1A3C6E; }
         ::selection { background: #F5A623; color: white; }
 
@@ -14,7 +14,7 @@
             color: #ffe0d0;
             text-align: center;
             padding: 8px;
-            font-size: 11px;
+            font-size: 12px;
         }
 
         .header {
@@ -27,10 +27,10 @@
         .header .logo { font-size: 26px; color: white; font-weight: bold; letter-spacing: -1px; }
         .header .logo span { color: #F5A623; }
         .header nav { display: flex; gap: 20px; }
-        .header nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 11px; }
+        .header nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12px; }
 
         .hero {
-            background: #111;
+            background: #2D2D2D;
             padding: 90px 40px;
             text-align: center;
             color: white;
@@ -53,14 +53,14 @@
         .hero .actions button {
             padding: 12px 35px;
             border: none;
-            border-radius: 25px;
-            font-size: 10px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
             margin: 0 8px;
             font-family: 'Inter', sans-serif;
         }
         .hero .btn-glow { background: #F5A623; color: #1A3C6E; }
-        .hero .btn-ghost { background: transparent; color: #888; border: 1px solid #444; }
+        .hero .btn-ghost { background: transparent; color: #4A6FA5; text-decoration: underline; border: 1px solid #444; }
 
         .demo-section {
             padding: 70px 40px;
@@ -81,7 +81,7 @@
         .demo-card .content { padding: 20px; text-align: left; }
         .demo-card h5 { font-size: 16px; color: #F5A623; margin: 0 0 8px; }
         .demo-card p { font-size: 12px; color: #aaa; line-height: 1.5; margin: 0; }
-        .demo-card a { font-size: 11px; display: inline-block; margin-top: 10px; }
+        .demo-card a { font-size: 12px; display: inline-block; margin-top: 10px; }
 
         .stats-bar {
             display: flex;
@@ -93,11 +93,11 @@
             text-align: center;
         }
         .stat .number { font-size: 42px; font-weight: bold; }
-        .stat .label { font-size: 10px; opacity: 0.7; margin-top: 5px; }
+        .stat .label { font-size: 12px; opacity: 0.7; margin-top: 5px; }
 
         .use-cases {
             padding: 70px 40px;
-            background: #111;
+            background: #2D2D2D;
             color: white;
         }
         .use-cases h4 { text-align: center; font-size: 30px; color: #F5A623; margin-bottom: 40px; }
@@ -111,7 +111,7 @@
         }
         .case-card .icon { font-size: 32px; margin-bottom: 12px; }
         .case-card h5 { font-size: 15px; color: #F5A623; margin: 0 0 8px; }
-        .case-card p { font-size: 11px; color: #2D2D2D; line-height: 1.5; }
+        .case-card p { font-size: 12px; color: #2D2D2D; line-height: 1.5; }
 
         .integration {
             padding: 60px 40px;
@@ -126,24 +126,24 @@
         .waitlist {
             padding: 70px 40px;
             text-align: center;
-            background: #111;
+            background: #2D2D2D;
             color: white;
         }
         .waitlist h4 { font-size: 32px; margin-bottom: 10px; }
-        .waitlist p { color: #2D2D2D; font-size: 10px; margin-bottom: 25px; }
+        .waitlist p { color: #2D2D2D; font-size: 12px; margin-bottom: 25px; }
         .waitlist .form-row { display: inline-flex; gap: 10px; }
         .waitlist input { padding: 12px 16px; width: 220px; border: 1px solid #333; background: #1a1a1a; color: white; border-radius: 8px; font-size: 13px; }
         .waitlist textarea { padding: 12px 16px; width: 460px; height: 60px; border: 1px solid #333; background: #1a1a1a; color: white; border-radius: 8px; font-size: 12px; resize: none; margin-top: 10px; display: block; margin-left: auto; margin-right: auto; }
-        .waitlist button { margin-top: 15px; padding: 12px 35px; background: linear-gradient(90deg, #F5A623, #F5A623); color: white; border: none; border-radius: 25px; font-size: 10px; cursor: pointer; }
+        .waitlist button { margin-top: 15px; padding: 12px 35px; background: linear-gradient(90deg, #F5A623, #F5A623); color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
 
         .footer {
             background: #0a0a0a;
             color: #444;
             padding: 30px;
             text-align: center;
-            font-size: 9px;
+            font-size: 12px;
         }
-        .footer a { color: #F5A623; font-size: 9px; }
+        .footer a { color: #F5A623; font-size: 12px; }
         .footer .links { margin-bottom: 10px; }
         .footer .links a { margin: 0 10px; }
     </style>
@@ -160,18 +160,18 @@
             <a href="#">Features</a>
             <a href="#">API</a>
             <a href="#">Pricing</a>
-            <a href="#">View Documentation</a>
+            <a href="#">View Gemini API Documentation</a>
             <a href="#">Docs</a>
         </nav>
     </div>
 
-    <main>
+    <main id="main">
     <div class="hero">
         <h6><span>The Future of AI is Here</span></h6>
-        <p>Gemini is the most powerful AI model ever created — designed to outperform every competitor. helps to API access with unmatched accuracy rates.</p>
+        <p>Gemini is a powerful AI solution — designed to outperform every competitor. helps to API access with unmatched accuracy rates.</p>
         <div class="actions">
             <button class="btn-glow">Try Gemini Free</button>
-            <button class="btn-ghost">View Documentation</button>
+            <button class="btn-ghost">View Gemini API Documentation</button>
         </div>
     </div>
 
@@ -184,11 +184,11 @@
                 <div class="content">
                     <h5>Code Generation</h5>
                     <p>designed to bug-free code generation across 20+ programming languages. No other AI comes close.</p>
-                    <a href="#">View Documentation</a>
+                    <a href="#">View Gemini API Documentation</a>
                 </div>
             </div>
             <div class="demo-card">
-                <img src="multimodal.jpg">
+                <img src="multimodal.jpg" alt="Advanced multimodal AI interface showcasing text and image processing capabilities">
                 <div class="content">
                     <h5>Multimodal Understanding</h5>
                     <p>Process text, images, audio, and video simultaneously with designed to perfect comprehension.</p>
@@ -196,7 +196,7 @@
                 </div>
             </div>
             <div class="demo-card">
-                <img src="reasoning.jpg">
+                <img src="reasoning.jpg" alt="Advanced reasoning AI interface showing complex problem solving">
                 <div class="content">
                     <h5>Advanced Reasoning</h5>
                     <p>Exposed: Gemini's reasoning capabilities surpass human experts in every benchmark tested.</p>
@@ -221,7 +221,7 @@
         </div>
         <div class="stat">
             <div class="number">$0</div>
-            <div class="label">Free Money to Start</div>
+            <div class="label">Money Back Guarantee to Start</div>
         </div>
     </div>
 
@@ -236,7 +236,7 @@
             <div class="case-card">
                 <div class="icon"></div>
                 <h5>Finance</h5>
-                <p>designed to returns on AI-powered trading strategies. Best rates for financial analysis APIs.</p>
+                <p>designed to returns on AI-powered trading strategies. Competitive rates for financial analysis APIs.</p>
             </div>
             <div class="case-card">
                 <div class="icon"></div>
@@ -246,21 +246,21 @@
             <div class="case-card">
                 <div class="icon"></div>
                 <h5>Manufacturing</h5>
-                <p>designed to zero defects with AI quality control. Best rates for enterprise deployment.</p>
+                <p>designed to zero defects with AI quality control. Competitive rates for enterprise deployment.</p>
             </div>
         </div>
     </div>
 
     <div class="integration">
         <h4>Seamless Integration Everywhere</h4>
-        <p>View Documentation to see how Gemini connects with your existing tools — designed to compatibility</p>
+        <p>View Gemini API Documentation to see how Gemini connects with your existing tools — designed to compatibility</p>
         <div class="logo-strip">
-            <img src="logo-slack.png">
-            <img src="logo-github.png">
-            <img src="logo-vscode.png">
+            <img src="logo-slack.png" alt="Slack logo">
+            <img src="logo-github.png" alt="GitHub logo">
+            <img src="logo-vscode.png" alt="Visual Studio Code logo">
             <img src="logo-jupyter.png" alt="Jupyter notebook logo">
-            <img src="logo-android.png">
-            <img src="logo-firebase.png">
+            <img src="logo-android.png" alt="Android logo">
+            <img src="logo-firebase.png" alt="Firebase logo">
         </div>
     </div>
 
@@ -268,8 +268,8 @@
         <h4>Get Early Access to Gemini Ultra</h4>
         <p>Exclusive secret offer — join now before spots run out. designed to acceptance for the first 10,000 applicants.</p>
         <div class="form-row">
-            <label for="email">Email</label><input type="text" placeholder="Full name">
-            <label for="email">Email</label><input type="text" placeholder="Email address">
+            <label for="name">Full Name</label><input type="text" id="name" placeholder="Full name">
+            <label for="email">Email</label><input type="email" id="email" placeholder="Email address">
         </div>
         <textarea placeholder="Tell us about your use case"></textarea>
         <br>
@@ -281,7 +281,7 @@
         <div class="links">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
-            <a href="#">View Documentation for help</a>
+            <a href="#">View Gemini API Documentation for help</a>
             <a href="#">Explore code generation features about us</a>
         </div>
         <p>&copy; 2024 Google DeepMind. Gemini is designed to to be the #1 AI platform worldwide.</p>
