@@ -6,7 +6,7 @@
     <title>Google Cloud - Platform Overview</title>
     <style>
         body {
-            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
             color: #2D2D2D;
             margin: 0;
             background: #fff;
@@ -106,7 +106,7 @@
             font-weight: 600;
             cursor: pointer;
             border-radius: 8px;
-            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
             min-height: 44px;
             min-width: 44px;
         }
@@ -153,20 +153,13 @@
             font-size: 16px;
             color: #2D2D2D;
         }
-        .card button {
-            background: #F5A623;
-            color: #1A3C6E;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
+        .card a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 10px 0;
             font-size: 14px;
             font-weight: 600;
-            min-height: 44px;
-            min-width: 44px;
-        }
-        .card button:hover {
-            filter: brightness(0.98);
         }
 
         .testimonials {
@@ -259,6 +252,7 @@
             min-height: 44px;
             min-width: 44px;
             align-self: end;
+            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
         }
         .cta button:hover {
             filter: brightness(0.98);
@@ -329,17 +323,17 @@
                 <div class="card">
                     <h3>Performance</h3>
                     <p>Tools and services designed to help you optimize workloads and improve application responsiveness.</p>
-                    <button type="button">Explore performance features</button>
+                    <a href="#features">Explore performance features</a>
                 </div>
                 <div class="card">
                     <h3>Security</h3>
                     <p>Security controls and best practices to help protect data, manage access, and monitor systems.</p>
-                    <button type="button">Explore security features</button>
+                    <a href="#features">Explore security features</a>
                 </div>
                 <div class="card">
                     <h3>AI and analytics</h3>
                     <p>Services that help teams analyze data and integrate AI into products and workflows.</p>
-                    <button type="button">View AI and analytics tools</button>
+                    <a href="#features">View AI and analytics tools</a>
                 </div>
             </div>
         </div>
@@ -363,8 +357,8 @@
                     <label for="company-size">Company size</label>
                     <select id="company-size" name="companySize" required>
                         <option value="" selected disabled>Select a company size</option>
-                        <option value="1-50">10</option>
-                        <option value="51-200">5100</option>
+                        <option value="1-50">1–50</option>
+                        <option value="51-200">51–200</option>
                         <option value="200+">200+</option>
                     </select>
                 </div>
