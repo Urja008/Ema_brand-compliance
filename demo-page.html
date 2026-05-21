@@ -1,445 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Cloud</title>
+    <title>Google Cloud - Best Deal Ever!</title>
     <style>
-        body {
-            font-family: 'Inter', 'Open Sans', sans-serif;
-            color: #2D2D2D;
-            margin: 0;
-            background: #FFFFFF;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        a {
-            color: #4A6FA5;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
-        a:hover {
-            color: #1A3C6E;
-        }
-
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible,
-        select:focus-visible {
-            outline: 2px solid #1A3C6E;
-            outline-offset: 2px;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 12px 16px;
-            background: #FFFFFF;
-            color: #1A3C6E;
-            border: 2px solid #1A3C6E;
-            border-radius: 6px;
-            transform: translateY(-150%);
-            z-index: 1000;
-        }
-
-        .skip-link:focus,
-        .skip-link:focus-visible {
-            transform: translateY(12px);
-        }
-
-        .topbar {
-            background: #1A3C6E;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 12px 16px;
-            font-size: 12px;
-        }
-
-        .navbar {
-            background: #1A3C6E;
-            padding: 12px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .navbar .brand {
-            color: #FFFFFF;
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .navbar nav a {
-            color: #FFFFFF;
-            margin-left: 18px;
-            text-decoration: underline;
-            font-size: 14px;
-        }
-
-        .hero {
-            background: #1A3C6E;
-            padding: 80px 40px;
-            text-align: center;
-            color: #FFFFFF;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 16px;
-            max-width: 650px;
-            margin: 0 auto 25px;
-            color: #FFFFFF;
-        }
-
-        .hero .btn {
-            background: #F5A623;
-            color: #1A3C6E;
-            padding: 12px 24px;
-            border: none;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 8px;
-            font-family: 'Inter', 'Open Sans', sans-serif;
-            min-width: 44px;
-            min-height: 44px;
-        }
-
-        .hero .btn:hover {
-            background: #e39a1f;
-        }
-
-        .features {
-            padding: 60px 30px;
-            text-align: center;
-            background: #F4F5F7;
-        }
-
-        .features h2 {
-            font-size: 32px;
-            color: #1A3C6E;
-            margin-bottom: 30px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .cards {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: #FFFFFF;
-            padding: 30px;
-            border-radius: 12px;
-            width: 280px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            text-align: left;
-        }
-
-        .card h3 {
-            color: #1A3C6E;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-top: 0;
-        }
-
-        .card p {
-            font-size: 16px;
-            color: #2D2D2D;
-        }
-
-        .card button {
-            background: #F5A623;
-            color: #1A3C6E;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            min-width: 44px;
-            min-height: 44px;
-        }
-
-        .card button:hover {
-            background: #e39a1f;
-        }
-
-        .testimonials {
-            padding: 60px 30px;
-            text-align: center;
-            background: #FFFFFF;
-        }
-
-        .testimonials h2 {
-            color: #1A3C6E;
-            font-size: 28px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .quote {
-            font-style: italic;
-            color: #2D2D2D;
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto 10px;
-        }
-
-        .cta {
-            background: #1A3C6E;
-            padding: 60px 30px;
-            text-align: center;
-            color: #FFFFFF;
-        }
-
-        .cta h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .cta p {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: #FFFFFF;
-        }
-
-        .cta form {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            align-items: flex-end;
-        }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-        }
-
-        .cta label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #FFFFFF;
-        }
-
-        .cta input {
-            padding: 12px;
-            width: 250px;
-            border: 2px solid #FFFFFF;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #2D2D2D;
-        }
-
-        .cta input::placeholder {
-            color: #2D2D2D;
-            opacity: 1;
-        }
-
-        .cta select {
-            padding: 12px;
-            border: 2px solid #FFFFFF;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #2D2D2D;
-            background: #FFFFFF;
-        }
-
-        .cta button {
-            padding: 12px 25px;
-            background: #F5A623;
-            color: #1A3C6E;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            min-width: 44px;
-            min-height: 44px;
-        }
-
-        .cta button:hover {
-            background: #e39a1f;
-        }
-
-        .footer {
-            background: #1A3C6E;
-            color: #FFFFFF;
-            padding: 40px 30px;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #FFFFFF;
-            text-decoration: underline;
-            font-size: 12px;
-            margin: 0 8px;
-        }
-
-        .footer-bottom {
-            background: #2D2D2D;
-            color: #FFFFFF;
-            padding: 15px;
-            text-align: center;
-            font-size: 12px;
-        }
-
-        @media (max-width: 640px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navbar nav a {
-                margin-left: 0;
-                margin-right: 12px;
-                display: inline-block;
-                padding: 8px 0;
-            }
-
-            .hero {
-                padding: 56px 20px;
-            }
-
-            .features,
-            .testimonials,
-            .cta {
-                padding: 48px 20px;
-            }
-
-            .card {
-                width: 100%;
-                max-width: 360px;
-            }
-
-            .cta input {
-                width: 100%;
-                max-width: 320px;
-            }
-        }
+        body { font-family: 'Papyrus', fantasy; color: #444; margin: 0; background: #fff; }
+        a { color: #FF00FF; }
+        a:focus, button:focus { outline: none; }
+        .topbar { background: #00FF00; color: black; text-align: center; padding: 10px; font-size: 11px; }
+        .navbar { background: #333; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .navbar .brand { color: #00FF00; font-size: 22px; font-weight: bold; }
+        .navbar a { color: #aaa; margin-left: 18px; text-decoration: none; font-size: 11px; }
+        .hero { background: #8B00FF; padding: 80px 40px; text-align: center; color: white; }
+        .hero h1 { font-size: 42px; text-shadow: 2px 2px #000; margin-bottom: 15px; }
+        .hero p { font-size: 16px; max-width: 650px; margin: 0 auto 25px; }
+        .hero .btn { background: #FF00FF; color: white; padding: 12px 30px; border: none; font-size: 10px; cursor: pointer; border-radius: 30px; font-family: 'Papyrus', fantasy; }
+        .features { padding: 60px 30px; text-align: center; background: #f5f5f5; }
+        .features h2 { font-size: 32px; color: #8B00FF; margin-bottom: 30px; }
+        .cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .card { background: white; padding: 30px; border-radius: 10px; width: 280px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .card h3 { color: #8B00FF; font-size: 18px; }
+        .card p { font-size: 13px; color: #999; }
+        .card button { background: #00FF00; color: black; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 11px; }
+        .testimonials { padding: 60px 30px; text-align: center; }
+        .testimonials h2 { color: #FF00FF; font-size: 28px; margin-bottom: 20px; }
+        .quote { font-style: italic; color: #888; font-size: 14px; max-width: 600px; margin: 0 auto 10px; }
+        .cta { background: linear-gradient(135deg, #8B00FF, #FF00FF); padding: 60px 30px; text-align: center; color: white; }
+        .cta h2 { font-size: 32px; margin-bottom: 10px; }
+        .cta p { font-size: 10px; margin-bottom: 20px; }
+        .cta input { padding: 12px; width: 250px; border: none; border-radius: 6px; }
+        .cta select { padding: 12px; border: none; border-radius: 6px; font-size: 12px; }
+        .cta button { padding: 12px 25px; background: #00FF00; color: black; border: none; border-radius: 6px; font-size: 11px; cursor: pointer; }
+        .footer { background: #111; color: #555; padding: 40px 30px; text-align: center; }
+        .footer a { color: #555; text-decoration: none; font-size: 10px; margin: 0 8px; }
+        .footer-bottom { background: #000; color: #444; padding: 15px; text-align: center; font-size: 9px; }
     </style>
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-
     <div class="topbar">
-        Explore Google Cloud features and pricing with clear, flexible options.
+        ACT FAST: Limited-time offer — We guarantee you'll never go back! Absolutely no risk!
     </div>
-
     <div class="navbar">
         <div class="brand">Google Cloud</div>
-        <nav aria-label="Primary">
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#resources">Resources</a>
-            <a href="#case-studies">Case studies</a>
-            <a href="#contact">Contact</a>
+        <nav>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Click here</a>
+            <a href="#">Learn more</a>
+            <a href="#">Contact</a>
         </nav>
     </div>
-
-    <main id="main-content">
-        <div class="hero">
-            <h1>Cloud infrastructure built to support modern teams</h1>
-            <p>Learn how Google Cloud can help you improve performance, security, and scalability based on your organization’s needs.</p>
-            <button class="btn" type="button">Start free trial</button>
-        </div>
-
-        <div class="features" id="features">
-            <h2>Key features</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>Fast, scalable compute</h3>
-                    <p>Optimize workloads with scalable infrastructure designed to support a wide range of performance requirements.</p>
-                    <button type="button">Explore compute options</button>
-                </div>
-                <div class="card">
-                    <h3>Security and compliance</h3>
-                    <p>Use built-in security features and controls to help protect data and meet common compliance needs.</p>
-                    <button type="button">View security features</button>
-                </div>
-                <div class="card">
-                    <h3>Analytics and AI tools</h3>
-                    <p>Use analytics and AI capabilities to gain insights and support data-driven decision-making.</p>
-                    <button type="button">See analytics and AI tools</button>
-                </div>
+    <div class="hero">
+        <h1>The Only Cloud Platform You'll Ever Need</h1>
+        <p>Enterprises using Google Cloud see guaranteed 10x performance gains. Risk-free migration with zero downtime — we promise!</p>
+        <button class="btn">START FREE TRIAL</button>
+    </div>
+    <div class="features">
+        <h2>Why We're the Best</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Lightning Speed</h3>
+                <p>Best rates in the industry — guaranteed lowest price or your money back. No other provider comes close.</p>
+                <button>Click here</button>
+            </div>
+            <div class="card">
+                <h3>Total Security</h3>
+                <p>Risk-free infrastructure with guaranteed zero breaches. Your data has never been safer.</p>
+                <button>Learn more</button>
+            </div>
+            <div class="card">
+                <h3>Smart AI</h3>
+                <p>Free money saved on operations with our AI tools. The most powerful analytics engine ever built.</p>
+                <button>See details</button>
             </div>
         </div>
-
-        <div class="testimonials" id="case-studies">
-            <h2>Customer story</h2>
-            <div class="quote">“We improved reliability and simplified operations after migrating key services to Google Cloud.”</div>
-            <p><strong>Alex Thompson</strong>, CEO at InnovateTech</p>
-            <p><a href="#customer-story">Read the full customer story</a></p>
-        </div>
-
-        <div class="cta" id="contact">
-            <h2>Get started</h2>
-            <p>Request details and trial access. You can change or cancel your trial according to the applicable terms.</p>
-            <form>
-                <div class="field">
-                    <label for="work-email">Work email</label>
-                    <input id="work-email" name="work-email" type="email" placeholder="name@company.com" autocomplete="email" required>
-                </div>
-
-                <div class="field">
-                    <label for="company-size">Company size</label>
-                    <select id="company-size" name="company-size" required>
-                        <option value="" selected disabled>Select a company size</option>
-                        <option value="1-50">1-50</option>
-                        <option value="51-200">51-200</option>
-                        <option value="200+">200+</option>
-                    </select>
-                </div>
-
-                <button type="submit">Request free trial</button>
-            </form>
-        </div>
-
-        <div class="features" id="pricing" aria-label="Pricing">
-            <h2>Pricing</h2>
-            <p>Review pricing options and choose the plan that fits your workload requirements.</p>
-        </div>
-
-        <div class="features" id="resources" aria-label="Resources">
-            <h2>Resources</h2>
-            <p>Browse documentation and guides to help you plan, deploy, and manage your cloud solutions.</p>
-        </div>
-
-        <div class="testimonials" id="customer-story" aria-label="Customer story details">
-            <h2>Customer story details</h2>
-            <p>Contact sales or your account team to learn more about this customer’s implementation details.</p>
-        </div>
-    </main>
-
-    <div class="footer">
-        <a href="#pricing">View pricing options</a>
-        <a href="#resources">Browse product resources</a>
-        <a href="#features">Explore key features</a>
-        <a href="#contact">Contact the Google Cloud team</a>
     </div>
-
+    <div class="testimonials">
+        <h2>What Customers Say</h2>
+        <div class="quote">"Switching to Google Cloud was no-risk. We saw guaranteed ROI within the first month."</div>
+        <p><strong>Alex Thompson</strong>, CEO at InnovateTech</p>
+        <p><a href="#">Read more</a></p>
+    </div>
+    <div class="cta">
+        <h2>Ready to Transform?</h2>
+        <p>Join now — absolutely no risk. Cancel anytime with guaranteed full refund.</p>
+        <form>
+            <input type="email" placeholder="Work email">
+            <select>
+                <option>Company size</option>
+                <option>1-50</option>
+                <option>51-200</option>
+                <option>200+</option>
+            </select>
+            <button type="submit">CLAIM YOUR FREE TRIAL</button>
+        </form>
+    </div>
+    <div class="footer">
+        <a href="#">Click here</a>
+        <a href="#">Read more</a>
+        <a href="#">Learn more</a>
+        <a href="#">See details</a>
+    </div>
     <div class="footer-bottom">
-        &copy; 2024 Google LLC. All rights reserved.
+        &copy; 2024 Google LLC. All rights reserved. | Guaranteed best service in the market.
     </div>
 </body>
 </html>
