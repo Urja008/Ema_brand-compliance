@@ -6,21 +6,29 @@
     <title>Gemini AI</title>
     <style>
         :root {
-            --brand-primary: #1a73e8;
-            --brand-accent: #1557b0;
-            --brand-highlight: #fbbc04;
-            --text: #1f1f1f;
+            --brand-primary: #4A6FA5; /* Slate Blue (approved link color) */
+            --brand-accent: #1A3C6E;  /* Google Navy */
+            --brand-highlight: #F5A623; /* Google Gold */
+            --text: #2D2D2D; /* Dark Gray */
             --muted: #5f6368;
-            --bg-dark: #111111;
+            --bg-dark: #1A3C6E; /* Google Navy for hero/dark sections */
             --bg-light: #fafafa;
             --card-bg: #ffffff;
             --border-dark: #333333;
-            --focus: #fbbc04;
+            --focus: #F5A623; /* Google Gold */
         }
 
         * { box-sizing: border-box; }
 
-        body { font-family: "Inter", "Open Sans", Arial, sans-serif; margin: 0; color: var(--text); font-size: 16px; line-height: 1.5; }
+        body {
+            font-family: "Inter", "Open Sans", sans-serif;
+            margin: 0;
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.5;
+            background: #ffffff;
+        }
+
         a { color: var(--brand-primary); text-decoration: underline; }
 
         a:focus, button:focus, input:focus, textarea:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
@@ -32,8 +40,8 @@
             top: 10px;
             padding: 10px 12px;
             background: #ffffff;
-            color: #000000;
-            border: 2px solid #000000;
+            color: #2D2D2D;
+            border: 2px solid #1A3C6E;
             border-radius: 6px;
             transform: translateY(-200%);
             z-index: 1000;
@@ -49,7 +57,7 @@
         }
 
         .header {
-            background: linear-gradient(90deg, var(--brand-accent), var(--brand-primary));
+            background: var(--brand-accent);
             padding: 14px 35px;
             display: flex;
             justify-content: space-between;
@@ -58,7 +66,7 @@
         .header .logo { font-size: 26px; color: white; font-weight: 700; letter-spacing: -1px; }
         .header .logo span { color: var(--brand-highlight); }
         .header nav { display: flex; gap: 20px; }
-        .header nav a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 14px; }
+        .header nav a { color: rgba(255,255,255,0.95); text-decoration: underline; font-size: 14px; }
         .header nav a:hover { text-decoration: underline; }
 
         .hero {
@@ -76,23 +84,39 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(26,115,232,0.18) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(245,166,35,0.18) 0%, transparent 70%);
         }
         .hero h1 { font-size: 52px; margin: 0 0 15px; position: relative; }
-        .hero h1 span { background: linear-gradient(90deg, var(--brand-accent), var(--brand-primary), var(--brand-highlight)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
-        .hero p { font-size: 17px; color: #d7d7d7; max-width: 600px; margin: 0 auto 30px; position: relative; }
+        .hero h1 span { color: #ffffff; }
+        .hero p { font-size: 17px; color: #ffffff; max-width: 600px; margin: 0 auto 30px; position: relative; opacity: 0.92; }
         .hero .actions { position: relative; }
         .hero .actions button {
             padding: 12px 35px;
-            border: none;
             border-radius: 25px;
             font-size: 14px;
             cursor: pointer;
             margin: 0 8px;
-            font-family: "Inter", "Open Sans", Arial, sans-serif;
+            font-family: "Inter", "Open Sans", sans-serif;
+            min-height: 44px;
+            min-width: 44px;
         }
-        .hero .btn-glow { background: linear-gradient(90deg, var(--brand-accent), var(--brand-primary)); color: white; }
-        .hero .btn-ghost { background: transparent; color: #e5e5e5; border: 1px solid #666; }
+        /* Primary CTA (Google Gold background, Google Navy text) */
+        .hero .btn-glow {
+            background: #F5A623;
+            color: #1A3C6E;
+            border: 2px solid #F5A623;
+            font-weight: 600;
+        }
+        .hero .btn-glow:hover { filter: brightness(0.96); }
+
+        /* Secondary CTA (White background, 2px Navy border, Navy text) */
+        .hero .btn-ghost {
+            background: #FFFFFF;
+            color: #1A3C6E;
+            border: 2px solid #1A3C6E;
+            font-weight: 600;
+        }
+        .hero .btn-ghost:hover { background: #F4F5F7; }
 
         .demo-section {
             padding: 70px 40px;
@@ -111,7 +135,7 @@
         }
         .demo-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
         .demo-card .content { padding: 20px; text-align: left; }
-        .demo-card h3 { font-size: 16px; color: var(--brand-primary); margin: 0 0 8px; }
+        .demo-card h3 { font-size: 16px; color: var(--brand-accent); margin: 0 0 8px; }
         .demo-card p { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0; }
         .demo-card a { font-size: 14px; display: inline-block; margin-top: 10px; }
 
@@ -120,13 +144,13 @@
             justify-content: center;
             gap: 60px;
             padding: 50px 30px;
-            background: linear-gradient(90deg, var(--brand-accent), var(--brand-primary));
+            background: var(--brand-accent);
             color: white;
             text-align: center;
             flex-wrap: wrap;
         }
         .stat .number { font-size: 42px; font-weight: 700; }
-        .stat .label { font-size: 14px; opacity: 0.9; margin-top: 5px; }
+        .stat .label { font-size: 14px; opacity: 0.95; margin-top: 5px; }
 
         .use-cases {
             padding: 70px 40px;
@@ -138,13 +162,13 @@
         .case-card {
             width: 220px;
             padding: 25px;
-            background: #1a1a1a;
+            background: rgba(255,255,255,0.08);
             border-radius: 10px;
-            border-top: 3px solid var(--brand-primary);
+            border-top: 3px solid var(--brand-highlight);
         }
         .case-card .icon { font-size: 32px; margin-bottom: 12px; }
         .case-card h3 { font-size: 15px; color: #ffffff; margin: 0 0 8px; }
-        .case-card p { font-size: 14px; color: #d0d0d0; line-height: 1.5; margin: 0; }
+        .case-card p { font-size: 14px; color: #ffffff; line-height: 1.5; margin: 0; opacity: 0.92; }
 
         .integration {
             padding: 60px 40px;
@@ -163,7 +187,7 @@
             color: white;
         }
         .waitlist h2 { font-size: 32px; margin-bottom: 10px; }
-        .waitlist p { color: #d0d0d0; font-size: 14px; margin-bottom: 25px; }
+        .waitlist p { color: #ffffff; font-size: 14px; margin-bottom: 25px; opacity: 0.92; }
         .waitlist form { margin: 0 auto; max-width: 560px; }
         .waitlist .form-row { display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .field { text-align: left; }
@@ -171,20 +195,21 @@
         .waitlist input {
             padding: 12px 16px;
             width: 220px;
-            border: 1px solid var(--border-dark);
-            background: #1a1a1a;
-            color: white;
+            border: 1px solid rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.10);
+            color: #ffffff;
             border-radius: 8px;
             font-size: 16px;
+            min-height: 44px;
         }
         .waitlist textarea {
             padding: 12px 16px;
             width: 100%;
             max-width: 460px;
             height: 90px;
-            border: 1px solid var(--border-dark);
-            background: #1a1a1a;
-            color: white;
+            border: 1px solid rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.10);
+            color: #ffffff;
             border-radius: 8px;
             font-size: 16px;
             resize: vertical;
@@ -192,26 +217,32 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            min-height: 44px;
         }
         .waitlist button {
             margin-top: 15px;
             padding: 12px 35px;
-            background: linear-gradient(90deg, var(--brand-accent), var(--brand-primary));
-            color: white;
-            border: none;
+            background: #F5A623;
+            color: #1A3C6E;
+            border: 2px solid #F5A623;
             border-radius: 25px;
             font-size: 14px;
             cursor: pointer;
+            font-family: "Inter", "Open Sans", sans-serif;
+            font-weight: 600;
+            min-height: 44px;
+            min-width: 44px;
         }
+        .waitlist button:hover { filter: brightness(0.96); }
 
         .footer {
-            background: #0a0a0a;
-            color: #cfcfcf;
+            background: var(--brand-accent);
+            color: #ffffff;
             padding: 30px;
             text-align: center;
             font-size: 12px;
         }
-        .footer a { color: var(--brand-primary); font-size: 12px; }
+        .footer a { color: var(--brand-primary); font-size: 12px; text-decoration: underline; }
         .footer .links { margin-bottom: 10px; }
         .footer .links a { margin: 0 10px; }
 
