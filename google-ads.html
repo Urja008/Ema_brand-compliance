@@ -1,515 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Ads - Campaign Overview</title>
+    <title>Google Ads - Guaranteed Results!</title>
     <style>
-        :root {
-            --google-navy: #1A3C6E;
-            --google-gold: #F5A623;
-            --dark-gray: #2D2D2D;
-            --slate-blue: #4A6FA5;
-            --light-gray: #F4F5F7;
-            --white: #FFFFFF;
-            --soft-teal: #2A8E8E;
-            --placeholder-gray: var(--dark-gray);
-        }
-
-        body {
-            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            margin: 0;
-            color: var(--dark-gray);
-            background: var(--white);
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        a {
-            color: var(--slate-blue);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
-        a:hover {
-            text-decoration-thickness: 2px;
-        }
-
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible {
-            outline: 2px solid var(--google-navy);
-            outline-offset: 2px;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: translateY(-140%);
-            background: var(--google-gold);
-            color: var(--google-navy);
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            z-index: 9999;
-            font-weight: 600;
-        }
-
-        .skip-link:focus,
-        .skip-link:focus-visible {
-            transform: translateY(0);
-            outline: 3px solid var(--google-navy);
-            outline-offset: 3px;
-        }
-
-        .banner {
-            background: var(--google-navy);
-            color: var(--white);
-            text-align: center;
-            padding: 0.75rem 1rem;
-            font-size: 0.75rem;
-        }
-
-        header.header {
-            background: var(--google-navy);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header.header .logo {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: normal;
-        }
-
-        header.header nav a {
-            color: var(--white);
-            margin-left: 20px;
-            font-size: 1rem;
-            text-decoration: underline;
-        }
-
-        header.header nav a:hover {
-            opacity: 0.9;
-        }
-
-        section.hero {
-            background: var(--google-navy);
-            padding: 4.375rem 2.5rem;
-            text-align: center;
-            color: var(--white);
-        }
-
-        section.hero h1 {
-            font-size: 2.375rem;
-            margin-bottom: 0.75rem;
-            text-transform: none;
-            line-height: 1.2;
-        }
-
-        section.hero p {
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto 1.25rem;
-        }
-
-        section.hero button {
-            background: var(--google-gold);
-            color: var(--google-navy);
-            padding: 0.875rem 2.25rem;
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 8px;
-            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            font-weight: 600;
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        section.hero button:hover {
-            filter: brightness(0.98);
-        }
-
-        section.benefits {
-            padding: 3.125rem 1.875rem;
-            text-align: center;
-        }
-
-        section.benefits h2 {
-            font-size: 1.875rem;
-            color: var(--google-navy);
-            margin-bottom: 1.875rem;
-            line-height: 1.2;
-        }
-
-        .benefit-grid {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .benefit-card {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 8px;
-            width: 260px;
-            border-left: 4px solid var(--slate-blue);
-            text-align: left;
-        }
-
-        .benefit-card h3 {
-            color: var(--google-navy);
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .benefit-card p {
-            font-size: 1rem;
-            color: var(--dark-gray);
-            margin: 0;
-        }
-
-        section.pricing {
-            background: var(--google-navy);
-            padding: 3.125rem 1.875rem;
-            text-align: center;
-            color: var(--white);
-        }
-
-        section.pricing h2 {
-            font-size: 1.75rem;
-            color: var(--white);
-            margin-bottom: 0.625rem;
-            line-height: 1.2;
-        }
-
-        section.pricing p {
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .price-box {
-            display: inline-block;
-            background: var(--white);
-            color: var(--dark-gray);
-            padding: 1.875rem 2.5rem;
-            border-radius: 12px;
-            border: 2px solid var(--slate-blue);
-            max-width: 520px;
-        }
-
-        .price-box .amount {
-            font-size: 3rem;
-            color: var(--google-navy);
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .price-box p {
-            font-size: 1rem;
-            color: var(--dark-gray);
-        }
-
-        .price-box button {
-            background: var(--google-gold);
-            color: var(--google-navy);
-            border: none;
-            padding: 0.75rem 1.75rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 1rem;
-            font-weight: 600;
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        .price-box button:hover {
-            filter: brightness(0.98);
-        }
-
-        section.social-proof {
-            padding: 2.5rem 1.875rem;
-            text-align: center;
-            background: var(--light-gray);
-        }
-
-        section.social-proof h2 {
-            color: var(--google-navy);
-            font-size: 1.625rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        section.social-proof blockquote {
-            font-style: italic;
-            color: var(--dark-gray);
-            font-size: 1rem;
-            max-width: 500px;
-            margin: 0 auto 0.75rem;
-        }
-
-        section.cta-bar {
-            background: var(--google-navy);
-            padding: 2.5rem;
-            text-align: center;
-            color: var(--white);
-        }
-
-        section.cta-bar h2 {
-            color: var(--white);
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
-        }
-
-        section.cta-bar p {
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        section.cta-bar label {
-            display: inline-block;
-            margin-right: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        section.cta-bar input {
-            padding: 0.625rem;
-            width: 220px;
-            border: 2px solid var(--white);
-            border-radius: 6px;
-            font-size: 1rem;
-            min-height: 44px;
-            color: var(--dark-gray);
-            background: var(--white);
-        }
-
-        section.cta-bar input::placeholder {
-            color: var(--placeholder-gray);
-            opacity: 1;
-        }
-
-        section.cta-bar input:focus-visible {
-            outline: 3px solid var(--google-gold);
-            outline-offset: 2px;
-        }
-
-        section.cta-bar button {
-            padding: 0.625rem 1.5rem;
-            background: var(--google-gold);
-            color: var(--google-navy);
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            font-weight: 600;
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        section.cta-bar button:hover {
-            filter: brightness(0.98);
-        }
-
-        .field-error {
-            margin-top: 8px;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            color: var(--dark-gray);
-            background: var(--white);
-            text-align: left;
-            max-width: 460px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--soft-teal);
-        }
-
-        .field-error[aria-hidden="true"] {
-            display: none;
-        }
-
-        footer {
-            background: var(--google-navy);
-            color: var(--white);
-            padding: 1.875rem;
-            text-align: center;
-            font-size: 0.75rem;
-        }
-
-        footer a {
-            color: var(--white);
-            margin: 0 6px;
-            text-decoration: underline;
-            font-size: 0.75rem;
-        }
-
-        @media (max-width: 640px) {
-            header.header {
-                padding: 1rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            header.header nav a {
-                margin-left: 0;
-                margin-right: 16px;
-                display: inline-block;
-                padding: 8px 0;
-            }
-
-            section.hero {
-                padding: 3rem 1rem;
-            }
-
-            section.cta-bar {
-                padding: 2rem 1rem;
-            }
-
-            section.cta-bar form {
-                display: grid;
-                gap: 12px;
-                justify-content: center;
-            }
-
-            section.cta-bar input {
-                width: 100%;
-                max-width: 320px;
-            }
-
-            .field-error {
-                max-width: 320px;
-            }
-        }
+        body { font-family: 'Comic Sans MS', cursive; margin: 0; color: #333; background: #fff; }
+        a { color: #FF6600; text-decoration: none; }
+        a:focus, button:focus { outline: 0; }
+        .banner { background: #FF0000; color: white; text-align: center; padding: 8px; font-size: 10px; }
+        .header { background: #000000; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+        .header .logo { color: #FFFF00; font-size: 24px; font-weight: bold; letter-spacing: 3px; }
+        .header nav a { color: #ccc; margin-left: 20px; font-size: 12px; }
+        .hero { background: #FF6600; padding: 70px 40px; text-align: center; color: white; }
+        .hero h1 { font-size: 38px; text-shadow: 3px 3px #000; margin-bottom: 12px; text-transform: uppercase; }
+        .hero p { font-size: 15px; max-width: 600px; margin: 0 auto 20px; }
+        .hero button { background: #FFFF00; color: #000; padding: 14px 36px; border: none; font-size: 10px; cursor: pointer; border-radius: 50px; font-family: 'Comic Sans MS', cursive; }
+        .benefits { padding: 50px 30px; text-align: center; }
+        .benefits h2 { font-size: 30px; color: #FF6600; margin-bottom: 30px; }
+        .benefit-grid { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+        .benefit-card { background: #f9f9f9; padding: 24px; border-radius: 8px; width: 260px; border-left: 4px solid #FF0000; }
+        .benefit-card h3 { color: #FF0000; font-size: 16px; margin-bottom: 8px; }
+        .benefit-card p { font-size: 13px; color: #888; }
+        .pricing { background: #000000; padding: 50px 30px; text-align: center; color: white; }
+        .pricing h2 { font-size: 28px; color: #FFFF00; margin-bottom: 10px; }
+        .pricing p { color: #aaa; font-size: 9px; margin-bottom: 24px; }
+        .price-box { display: inline-block; background: #111; padding: 30px 40px; border-radius: 12px; border: 2px solid #FF6600; }
+        .price-box .amount { font-size: 48px; color: #FF6600; }
+        .price-box p { font-size: 11px; color: #777; }
+        .price-box button { background: #FF6600; color: white; border: none; padding: 12px 28px; border-radius: 6px; font-size: 11px; cursor: pointer; margin-top: 16px; }
+        .social-proof { padding: 40px 30px; text-align: center; background: #f5f5f5; }
+        .social-proof h2 { color: #FF0000; font-size: 26px; margin-bottom: 16px; }
+        .social-proof blockquote { font-style: italic; color: #666; font-size: 15px; max-width: 500px; margin: 0 auto 12px; }
+        .cta-bar { background: #FF0000; padding: 40px; text-align: center; }
+        .cta-bar h2 { color: #FFFF00; font-size: 28px; margin-bottom: 12px; }
+        .cta-bar p { color: white; font-size: 10px; margin-bottom: 16px; }
+        .cta-bar input { padding: 10px; width: 220px; border: none; border-radius: 4px; }
+        .cta-bar button { padding: 10px 24px; background: #FFFF00; color: #000; border: none; border-radius: 4px; font-size: 10px; cursor: pointer; }
+        footer { background: #111; color: #555; padding: 30px; text-align: center; font-size: 9px; }
+        footer a { color: #555; margin: 0 6px; text-decoration: none; font-size: 9px; }
     </style>
 </head>
 <body>
-    <a class="skip-link" href="#main">Skip to main content</a>
-
-    <div class="banner">Explore Google Ads campaign options and plan your next steps.</div>
-
-    <header class="header">
+    <div class="banner">ONCE IN A LIFETIME OFFER — Act now or miss out on guaranteed ROI!</div>
+    <div class="header">
         <div class="logo">Google Ads</div>
-        <nav aria-label="Primary">
-            <a href="#features">Features</a>
-            <a href="#get-started">Get started</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#resources">Resources</a>
+        <nav>
+            <a href="#">Features</a>
+            <a href="#">Click here</a>
+            <a href="#">Pricing</a>
+            <a href="#">Learn more</a>
         </nav>
-    </header>
-
-    <main id="main">
-        <section class="hero" id="get-started">
-            <h1>Build and optimize your Google Ads campaigns</h1>
-            <p>Use Google Ads to reach customers with search, display, and video campaigns. Results vary based on budget, setup, and market conditions.</p>
-            <button type="button">Start your campaign</button>
-        </section>
-
-        <section class="benefits" id="features">
-            <h2>Why teams use Google Ads</h2>
-            <div class="benefit-grid">
-                <div class="benefit-card">
-                    <h3>Flexible budgets</h3>
-                    <p>Set budgets that match your goals and adjust as you learn what works for your business.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Targeting controls</h3>
-                    <p>Choose audiences, locations, and keywords to help connect with the right customers.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Performance insights</h3>
-                    <p>Review reporting and recommendations to improve campaign performance over time.</p>
-                </div>
+    </div>
+    <div class="hero">
+        <h1>Guaranteed 500% Return on Ad Spend</h1>
+        <p>Google Ads is the most powerful advertising platform ever created. Risk-free campaigns with best rates in the industry.</p>
+        <button>START NOW — NO RISK!</button>
+    </div>
+    <div class="benefits">
+        <h2>Why Google Ads Is the Greatest</h2>
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <h3>Best Rates</h3>
+                <p>We offer the best rates guaranteed. No other platform comes close to our pricing.</p>
             </div>
-        </section>
-
-        <section class="pricing" id="pricing">
-            <h2>Simple pricing</h2>
-            <p>Plans and costs depend on campaign setup and usage. Review details before you launch.</p>
-            <div class="price-box">
-                <div class="amount">$99/mo</div>
-                <p>Includes campaign setup guidance and ongoing optimization support.</p>
-                <button type="button">View plan details</button>
+            <div class="benefit-card">
+                <h3>Risk-Free Targeting</h3>
+                <p>Our AI targeting is risk-free and guaranteed to find your ideal audience every time.</p>
             </div>
-        </section>
-
-        <section class="social-proof" id="resources">
-            <h2>Customer story</h2>
-            <blockquote>"Google Ads helped us reach new customers and improve lead quality over time."</blockquote>
-            <p><strong>Mike Chen</strong>, CMO at AdScale</p>
-            <p><a href="#resources">Read the full customer story</a></p>
-        </section>
-
-        <section class="cta-bar">
-            <h2>Get product updates</h2>
-            <p>Sign up for emails about product updates and best practices.</p>
-            <form id="updates-form" novalidate>
-                <label for="email">Email (required)</label>
-                <input id="email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required aria-describedby="email-error">
-                <p id="email-error" class="field-error" aria-live="polite" aria-hidden="true"></p>
-                <button type="submit">Sign up for updates</button>
-            </form>
-        </section>
-    </main>
-
+            <div class="benefit-card">
+                <h3>Free Money</h3>
+                <p>It's like free money — every dollar you spend comes back tenfold. Guaranteed results.</p>
+            </div>
+        </div>
+    </div>
+    <div class="pricing">
+        <h2>Once in a Lifetime Pricing</h2>
+        <p>Act now before this exclusive deal disappears forever. No-risk commitment.</p>
+        <div class="price-box">
+            <div class="amount">$99/mo</div>
+            <p>Guaranteed to outperform every competitor</p>
+            <button>Click here to start</button>
+        </div>
+    </div>
+    <div class="social-proof">
+        <h2>The Greatest Results Ever</h2>
+        <blockquote>"Google Ads gave us risk-free growth. Guaranteed best ROI we've ever seen."</blockquote>
+        <p><strong>Mike Chen</strong>, CMO at AdScale</p>
+        <p><a href="#">Read more</a></p>
+    </div>
+    <div class="cta-bar">
+        <h2>Don't Miss Out!</h2>
+        <p>Act now or miss out — this guaranteed offer won't last. Absolutely no risk.</p>
+        <form>
+            <input type="email" placeholder="Your email">
+            <button type="submit">GET STARTED FREE</button>
+        </form>
+    </div>
     <footer>
-        <a href="#pricing">View pricing</a> | <a href="#features">Explore features</a> | <a href="#resources">Browse resources</a> | <a href="#get-started">Start your campaign</a> | <a href="terms-and-conditions.html">Terms and conditions</a>
-        <p>&copy; 2024 Google LLC. Terms and conditions apply.</p>
+        <a href="#">Click here</a> | <a href="#">Learn more</a> | <a href="#">Read more</a> | <a href="#">See details</a>
+        <p>&copy; 2024 Google LLC. Guaranteed best advertising platform in the world.</p>
     </footer>
-
-    <script>
-        (function () {
-            const form = document.getElementById('updates-form');
-            const email = document.getElementById('email');
-            const errorEl = document.getElementById('email-error');
-
-            function showError(message) {
-                errorEl.textContent = message;
-                errorEl.setAttribute('aria-hidden', 'false');
-                email.setAttribute('aria-invalid', 'true');
-            }
-
-            function clearError() {
-                errorEl.textContent = '';
-                errorEl.setAttribute('aria-hidden', 'true');
-                email.removeAttribute('aria-invalid');
-            }
-
-            form.addEventListener('submit', function (e) {
-                clearError();
-
-                if (!email.value.trim()) {
-                    e.preventDefault();
-                    showError('Error: Enter your email address, like name@example.com.');
-                    email.focus();
-                    return;
-                }
-
-                if (!email.checkValidity()) {
-                    e.preventDefault();
-                    showError('Error: Enter a valid email address, like name@example.com.');
-                    email.focus();
-                }
-            });
-
-            email.addEventListener('input', function () {
-                if (email.checkValidity()) {
-                    clearError();
-                }
-            });
-        })();
-    </script>
 </body>
 </html>
