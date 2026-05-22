@@ -48,7 +48,7 @@
             transform: translateY(-140%);
             background: var(--google-gold);
             color: var(--google-navy);
-            padding: 12px 16px;
+            padding: 0.75rem 1rem;
             border-radius: 6px;
             z-index: 9999;
             font-weight: 600;
@@ -62,62 +62,62 @@
             background: var(--google-navy);
             color: var(--white);
             text-align: center;
-            padding: 12px 16px;
-            font-size: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 0.75rem;
         }
 
-        .header {
+        header.header {
             background: var(--google-navy);
-            padding: 16px 32px;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .header .logo {
+        header.header .logo {
             color: var(--white);
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: normal;
         }
 
-        .header nav a {
+        header.header nav a {
             color: var(--white);
             margin-left: 20px;
-            font-size: 16px;
+            font-size: 1rem;
             text-decoration: underline;
         }
 
-        .header nav a:hover {
+        header.header nav a:hover {
             opacity: 0.9;
         }
 
-        .hero {
+        section.hero {
             background: var(--google-navy);
-            padding: 70px 40px;
+            padding: 4.375rem 2.5rem;
             text-align: center;
             color: var(--white);
         }
 
-        .hero h1 {
-            font-size: 38px;
-            margin-bottom: 12px;
+        section.hero h1 {
+            font-size: 2.375rem;
+            margin-bottom: 0.75rem;
             text-transform: none;
             line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 16px;
+        section.hero p {
+            font-size: 1rem;
             max-width: 600px;
-            margin: 0 auto 20px;
+            margin: 0 auto 1.25rem;
         }
 
-        .hero button {
+        section.hero button {
             background: var(--google-gold);
             color: var(--google-navy);
-            padding: 14px 36px;
+            padding: 0.875rem 2.25rem;
             border: none;
-            font-size: 14px;
+            font-size: 1rem;
             cursor: pointer;
             border-radius: 8px;
             font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -126,19 +126,19 @@
             min-width: 44px;
         }
 
-        .hero button:hover {
+        section.hero button:hover {
             filter: brightness(0.98);
         }
 
-        .benefits {
-            padding: 50px 30px;
+        section.benefits {
+            padding: 3.125rem 1.875rem;
             text-align: center;
         }
 
-        .benefits h2 {
-            font-size: 30px;
+        section.benefits h2 {
+            font-size: 1.875rem;
             color: var(--google-navy);
-            margin-bottom: 30px;
+            margin-bottom: 1.875rem;
             line-height: 1.2;
         }
 
@@ -151,7 +151,7 @@
 
         .benefit-card {
             background: var(--light-gray);
-            padding: 24px;
+            padding: 1.5rem;
             border-radius: 8px;
             width: 260px;
             border-left: 4px solid var(--slate-blue);
@@ -160,56 +160,56 @@
 
         .benefit-card h3 {
             color: var(--google-navy);
-            font-size: 20px;
-            margin-bottom: 8px;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
             line-height: 1.2;
         }
 
         .benefit-card p {
-            font-size: 16px;
+            font-size: 1rem;
             color: var(--dark-gray);
             margin: 0;
         }
 
-        .pricing {
+        section.pricing {
             background: var(--google-navy);
-            padding: 50px 30px;
+            padding: 3.125rem 1.875rem;
             text-align: center;
             color: var(--white);
         }
 
-        .pricing h2 {
-            font-size: 28px;
+        section.pricing h2 {
+            font-size: 1.75rem;
             color: var(--white);
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem;
             line-height: 1.2;
         }
 
-        .pricing p {
+        section.pricing p {
             color: var(--white);
-            font-size: 16px;
-            margin-bottom: 24px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .price-box {
             display: inline-block;
             background: var(--white);
             color: var(--dark-gray);
-            padding: 30px 40px;
+            padding: 1.875rem 2.5rem;
             border-radius: 12px;
             border: 2px solid var(--slate-blue);
             max-width: 520px;
         }
 
         .price-box .amount {
-            font-size: 48px;
+            font-size: 3rem;
             color: var(--google-navy);
             font-weight: 700;
             line-height: 1.1;
         }
 
         .price-box p {
-            font-size: 16px;
+            font-size: 1rem;
             color: var(--dark-gray);
         }
 
@@ -217,11 +217,11 @@
             background: var(--google-gold);
             color: var(--google-navy);
             border: none;
-            padding: 12px 28px;
+            padding: 0.75rem 1.75rem;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 1rem;
             cursor: pointer;
-            margin-top: 16px;
+            margin-top: 1rem;
             font-weight: 600;
             min-height: 44px;
             min-width: 44px;
@@ -231,89 +231,93 @@
             filter: brightness(0.98);
         }
 
-        .social-proof {
-            padding: 40px 30px;
+        section.social-proof {
+            padding: 2.5rem 1.875rem;
             text-align: center;
             background: var(--light-gray);
         }
 
-        .social-proof h2 {
+        section.social-proof h2 {
             color: var(--google-navy);
-            font-size: 26px;
-            margin-bottom: 16px;
-            line-height:  1.2;
+            font-size: 1.625rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .social-proof blockquote {
+        section.social-proof blockquote {
             font-style: italic;
             color: var(--dark-gray);
-            font-size: 16px;
+            font-size: 1rem;
             max-width: 500px;
-            margin: 0 auto 12px;
+            margin: 0 auto 0.75rem;
         }
 
-        .cta-bar {
+        section.cta-bar {
             background: var(--google-navy);
-            padding: 40px;
+            padding: 2.5rem;
             text-align: center;
             color: var(--white);
         }
 
-        .cta-bar h2 {
+        section.cta-bar h2 {
             color: var(--white);
-            font-size: 28px;
-            margin-bottom: 12px;
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
             line-height: 1.2;
         }
 
-        .cta-bar p {
+        section.cta-bar p {
             color: var(--white);
-            font-size: 16px;
-            margin-bottom: 16px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .cta-bar label {
+        section.cta-bar label {
             display: inline-block;
             margin-right: 8px;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 600;
         }
 
-        .cta-bar input {
-            padding: 10px;
+        section.cta-bar input {
+            padding: 0.625rem;
             width: 220px;
             border: 2px solid var(--white);
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 1rem;
             min-height: 44px;
         }
 
-        .cta-bar button {
-            padding: 10px 24px;
+        section.cta-bar button {
+            padding: 0.625rem 1.5rem;
             background: var(--google-gold);
             color: var(--google-navy);
             border: none;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 1rem;
             cursor: pointer;
             font-weight: 600;
             min-height: 44px;
             min-width: 44px;
         }
 
-        .cta-bar button:hover {
+        section.cta-bar button:hover {
             filter: brightness(0.98);
         }
 
         .field-error {
             margin-top: 8px;
-            font-size: 12px;
+            font-size: 0.75rem;
             line-height: 1.5;
-            color: var(--white);
+            color: var(--dark-gray);
+            background: var(--white);
             text-align: left;
             max-width: 460px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--error-red);
         }
 
         .field-error[aria-hidden="true"] {
@@ -323,48 +327,48 @@
         footer {
             background: var(--google-navy);
             color: var(--white);
-            padding: 30px;
+            padding: 1.875rem;
             text-align: center;
-            font-size: 12px;
+            font-size: 0.75rem;
         }
 
         footer a {
             color: var(--white);
             margin: 0 6px;
             text-decoration: underline;
-            font-size: 12px;
+            font-size: 0.75rem;
         }
 
         @media (max-width: 640px) {
-            .header {
-                padding: 16px;
+            header.header {
+                padding: 1rem;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 12px;
             }
 
-            .header nav a {
+            header.header nav a {
                 margin-left: 0;
                 margin-right: 16px;
                 display: inline-block;
                 padding: 8px 0;
             }
 
-            .hero {
-                padding: 48px 16px;
+            section.hero {
+                padding: 3rem 1rem;
             }
 
-            .cta-bar {
-                padding: 32px 16px;
+            section.cta-bar {
+                padding: 2rem 1rem;
             }
 
-            .cta-bar form {
+            section.cta-bar form {
                 display: grid;
                 gap: 12px;
                 justify-content: center;
             }
 
-            .cta-bar input {
+            section.cta-bar input {
                 width: 100%;
                 max-width: 320px;
             }
@@ -380,7 +384,7 @@
 
     <div class="banner">Explore Google Ads campaign options and plan your next steps.</div>
 
-    <div class="header">
+    <header class="header">
         <div class="logo">Google Ads</div>
         <nav aria-label="Primary">
             <a href="#features">Features</a>
@@ -388,16 +392,16 @@
             <a href="#pricing">Pricing</a>
             <a href="#resources">Resources</a>
         </nav>
-    </div>
+    </header>
 
     <main id="main">
-        <div class="hero" id="get-started">
+        <section class="hero" id="get-started">
             <h1>Build and optimize your Google Ads campaigns</h1>
             <p>Use Google Ads to reach customers with search, display, and video campaigns. Results vary based on budget, setup, and market conditions.</p>
             <button type="button">Start your campaign</button>
-        </div>
+        </section>
 
-        <div class="benefits" id="features">
+        <section class="benefits" id="features">
             <h2>Why teams use Google Ads</h2>
             <div class="benefit-grid">
                 <div class="benefit-card">
@@ -413,9 +417,9 @@
                     <p>Review reporting and recommendations to improve campaign performance over time.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="pricing" id="pricing">
+        <section class="pricing" id="pricing">
             <h2>Simple pricing</h2>
             <p>Plans and costs depend on campaign setup and usage. Review details before you launch.</p>
             <div class="price-box">
@@ -423,16 +427,16 @@
                 <p>Includes campaign setup guidance and ongoing optimization support.</p>
                 <button type="button">View plan details</button>
             </div>
-        </div>
+        </section>
 
-        <div class="social-proof" id="resources">
+        <section class="social-proof" id="resources">
             <h2>Customer story</h2>
             <blockquote>"Google Ads helped us reach new customers and improve lead quality over time."</blockquote>
             <p><strong>Mike Chen</strong>, CMO at AdScale</p>
             <p><a href="#resources">Read the full customer story</a></p>
-        </div>
+        </section>
 
-        <div class="cta-bar">
+        <section class="cta-bar">
             <h2>Get product updates</h2>
             <p>Sign up for emails about product updates and best practices.</p>
             <form id="updates-form" novalidate>
@@ -441,11 +445,11 @@
                 <p id="email-error" class="field-error" aria-live="polite" aria-hidden="true"></p>
                 <button type="submit">Sign up for updates</button>
             </form>
-        </div>
+        </section>
     </main>
 
     <footer>
-        <a href="#pricing">View pricing</a> | <a href="#features">Explore features</a> | <a href="#resources">Browse resources</a> | <a href="#get-started">Start your campaign</a>
+        <a href="#pricing">View pricing</a> | <a href="#features">Explore features</a> | <a href="#resources">Browse resources</a> | <a href="#get-started">Start your campaign</a> | <a href="terms-and-conditions.html">Terms and conditions</a>
         <p>&copy; 2024 Google LLC. Terms and conditions apply.</p>
     </footer>
 
