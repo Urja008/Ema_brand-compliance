@@ -12,7 +12,7 @@
             --slate-blue: #4A6FA5;
             --light-gray: #F4F5F7;
             --white: #FFFFFF;
-            --error-red: #B00020;
+            --soft-teal: #2A8E8E;
         }
 
         body {
@@ -317,7 +317,7 @@
             margin-right: auto;
             padding: 0.5rem 0.75rem;
             border-radius: 6px;
-            border-left: 4px solid var(--error-red);
+            border-left: 4px solid var(--soft-teal);
         }
 
         .field-error[aria-hidden="true"] {
@@ -476,14 +476,14 @@
 
                 if (!email.value.trim()) {
                     e.preventDefault();
-                    showError('Enter your email address, like name@example.com.');
+                    showError('Error: Enter your email address, like name@example.com.');
                     email.focus();
                     return;
                 }
 
                 if (!email.checkValidity()) {
                     e.preventDefault();
-                    showError('Enter a valid email address, like name@example.com.');
+                    showError('Error: Enter a valid email address, like name@example.com.');
                     email.focus();
                 }
             });
