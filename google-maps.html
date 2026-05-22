@@ -1,124 +1,455 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Google Maps Platform - Best Ever!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Google Maps Platform</title>
     <style>
-        body { font-family: Impact, sans-serif; margin: 0; color: #333; background: #fff; }
-        a { color: #FF69B4; text-decoration: none; }
-        a:focus, button:focus, input:focus { outline: none; }
-        .announcement { background: linear-gradient(90deg, #FF0000, #FF6600); color: white; text-align: center; padding: 10px; font-size: 10px; }
-        .nav { background: white; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #FF69B4; }
-        .nav .brand { color: #FF0000; font-size: 20px; font-weight: bold; }
-        .nav a { color: #666; margin-left: 16px; font-size: 11px; }
-        .hero { background: linear-gradient(135deg, #FF69B4, #FF0000); padding: 70px 40px; text-align: center; color: white; }
-        .hero h1 { font-size: 40px; text-shadow: 2px 2px #000; margin-bottom: 12px; }
-        .hero p { font-size: 15px; max-width: 620px; margin: 0 auto 24px; }
-        .hero .cta-group { display: flex; gap: 12px; justify-content: center; }
-        .hero button { padding: 12px 28px; border: none; font-size: 10px; cursor: pointer; border-radius: 8px; font-family: Impact, sans-serif; }
-        .hero .btn-main { background: #FFFF00; color: #000; }
-        .hero .btn-alt { background: #00FF00; color: #000; }
-        .use-cases { padding: 50px 30px; text-align: center; }
-        .use-cases h2 { font-size: 28px; color: #FF0000; margin-bottom: 28px; }
-        .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
-        .case-card { background: #fff; padding: 24px; border-radius: 10px; border: 1px solid #eee; text-align: left; }
-        .case-card h3 { color: #FF69B4; font-size: 16px; margin-bottom: 6px; }
-        .case-card p { font-size: 12px; color: #999; line-height: 1.4; }
-        .case-card a { font-size: 11px; }
-        .stats { background: #000000; padding: 50px 30px; text-align: center; }
-        .stats h2 { color: #FFFF00; font-size: 26px; margin-bottom: 24px; }
-        .stat-row { display: flex; justify-content: center; gap: 60px; }
-        .stat-item h3 { font-size: 40px; color: #00FF00; margin-bottom: 4px; }
-        .stat-item p { color: #777; font-size: 11px; }
-        .testimonial { padding: 50px 30px; text-align: center; background: #fafafa; }
-        .testimonial h2 { color: #FF69B4; font-size: 24px; margin-bottom: 16px; }
-        .testimonial blockquote { font-style: italic; color: #777; font-size: 15px; max-width: 550px; margin: 0 auto 10px; }
-        .signup { background: #FF0000; padding: 50px 30px; text-align: center; color: white; }
-        .signup h2 { font-size: 30px; margin-bottom: 8px; }
-        .signup p { font-size: 10px; margin-bottom: 20px; }
-        .signup form { display: flex; gap: 10px; justify-content: center; }
-        .signup input { padding: 10px; width: 200px; border: none; border-radius: 4px; }
-        .signup select { padding: 10px; border: none; border-radius: 4px; font-size: 11px; }
-        .signup button { padding: 10px 20px; background: #FFFF00; color: #000; border: none; border-radius: 4px; font-size: 10px; cursor: pointer; }
-        .footer { background: #111; color: #444; padding: 30px; text-align: center; }
-        .footer a { color: #444; font-size: 9px; margin: 0 8px; text-decoration: none; }
-        .footer p { font-size: 9px; margin-top: 12px; }
+        :root {
+            --google-navy: #1A3C6E;
+            --google-gold: #F5A623;
+            --white: #FFFFFF;
+            --dark-gray: #2D2D2D;
+            --slate-blue: #4A6FA5;
+            --light-gray: #F4F5F7;
+            --soft-teal: #2A8E8E;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Inter, "Open Sans", sans-serif;
+            margin: 0;
+            color: var(--dark-gray);
+            background: var(--white);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        a {
+            color: var(--slate-blue);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--google-navy);
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--google-navy);
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 12px 16px;
+            background: var(--white);
+            color: var(--google-navy);
+            border: 2px solid var(--google-navy);
+            border-radius: 6px;
+            transform: translateY(-130%);
+            z-index: 9999;
+        }
+
+        .skip-link:focus {
+            transform: translateY(12px);
+        }
+
+        .announcement {
+            background: var(--google-navy);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 16px;
+            font-size: 12px;
+        }
+
+        .nav {
+            background: var(--white);
+            padding: 14px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .nav .brand {
+            color: var(--google-navy);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .nav a {
+            color: var(--slate-blue);
+            margin-left: 16px;
+            font-size: 16px;
+        }
+
+        .hero {
+            background: var(--google-navy);
+            padding: 70px 40px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 12px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 16px;
+            max-width: 620px;
+            margin: 0 auto 24px;
+        }
+
+        .hero .cta-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            font-family: Inter, "Open Sans", sans-serif;
+        }
+
+        .hero button,
+        .signup button {
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .hero .btn-main {
+            background: var(--google-gold);
+            color: var(--google-navy);
+            border: 2px solid var(--google-gold);
+        }
+
+        .hero .btn-main:hover {
+            filter: brightness(0.95);
+        }
+
+        .hero .btn-alt {
+            background: var(--white);
+            color: var(--google-navy);
+            border: 2px solid var(--google-navy);
+        }
+
+        .hero .btn-alt:hover {
+            background: var(--light-gray);
+        }
+
+        .use-cases {
+            padding: 50px 30px;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .use-cases h2 {
+            font-size: 28px;
+            color: var(--google-navy);
+            margin-bottom: 28px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .case-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 10px;
+            border: 1px solid var(--light-gray);
+            text-align: left;
+        }
+
+        .case-card h3 {
+            color: var(--google-navy);
+            font-size: 20px;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .case-card p {
+            font-size: 16px;
+            color: var(--dark-gray);
+            line-height: 1.5;
+            margin: 0 0 12px;
+        }
+
+        .case-card a {
+            font-size: 16px;
+        }
+
+        .stats {
+            background: var(--light-gray);
+            padding: 50px 30px;
+            text-align: center;
+            color: var(--dark-gray);
+        }
+
+        .stats h2 {
+            color: var(--google-navy);
+            font-size: 26px;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 40px;
+            color: var(--soft-teal);
+            margin-bottom: 4px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: var(--dark-gray);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .testimonial {
+            padding: 50px 30px;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .testimonial h2 {
+            color: var(--google-navy);
+            font-size: 24px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .testimonial blockquote {
+            font-style: italic;
+            color: var(--dark-gray);
+            font-size: 16px;
+            max-width: 550px;
+            margin: 0 auto 10px;
+        }
+
+        .signup {
+            background: var(--google-navy);
+            padding: 50px 30px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .signup h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .signup p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .signup form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: end;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 12px;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .signup input,
+        .signup select {
+            padding: 10px;
+            width: 220px;
+            border: 2px solid var(--white);
+            border-radius: 6px;
+            font-size: 16px;
+            background: var(--white);
+            color: var(--dark-gray);
+            min-height: 44px;
+        }
+
+        .signup button {
+            background: var(--google-gold);
+            color: var(--google-navy);
+            border: 2px solid var(--google-gold);
+        }
+
+        .signup button:hover {
+            filter: brightness(0.95);
+        }
+
+        .footer {
+            background: var(--google-navy);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--white);
+            font-size: 12px;
+            margin: 0 8px;
+            text-decoration: underline;
+        }
+
+        .footer p {
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .case-grid {
+                grid-template-columns: 1fr;
+                max-width: 640px;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .nav nav a {
+                margin-left: 0;
+                margin-right: 16px;
+                display: inline-block;
+                padding: 6px 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="announcement">GUARANTEED: Best mapping platform ever — Act now or miss out!</div>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="announcement">Explore Google Maps Platform features and documentation for building location-based experiences.</div>
+
     <div class="nav">
         <div class="brand">Google Maps Platform</div>
-        <nav>
-            <a href="#">Products</a>
-            <a href="#">Click here</a>
-            <a href="#">Learn more</a>
-            <a href="#">Pricing</a>
-            <a href="#">Contact</a>
+        <nav aria-label="Primary">
+            <a href="#products">Products</a>
+            <a href="#use-cases">Explore use cases</a>
+            <a href="#pricing">View pricing</a>
+            <a href="#contact">Contact sales</a>
         </nav>
     </div>
-    <div class="hero">
-        <h1>The Most Powerful Maps API Ever Built</h1>
-        <p>Guaranteed 99.999% uptime with risk-free integration. The greatest mapping solution — no other provider comes close.</p>
-        <div class="cta-group">
-            <button class="btn-main">GET FREE API KEY</button>
-            <button class="btn-alt">SEE DEMO</button>
-        </div>
-    </div>
-    <div class="use-cases">
-        <h2>Why We're the Best</h2>
-        <div class="case-grid">
-            <div class="case-card">
-                <h3>Ride Sharing</h3>
-                <p>Best rates for route optimization. Guaranteed lowest latency or your money back.</p>
-                <a href="#">Learn more</a>
-            </div>
-            <div class="case-card">
-                <h3>Delivery Tracking</h3>
-                <p>Risk-free real-time tracking with guaranteed accuracy. No-risk implementation.</p>
-                <a href="#">Click here</a>
-            </div>
-            <div class="case-card">
-                <h3>Store Locator</h3>
-                <p>Free money saved on customer acquisition. The most powerful geocoding ever built.</p>
-                <a href="#">Read more</a>
+
+    <main id="main">
+        <div class="hero">
+            <h1>Build with Google Maps Platform</h1>
+            <p>Tools and APIs to add reliable maps and location features to your application.</p>
+            <div class="cta-group">
+                <button class="btn-main" type="button">Get an API key</button>
+                <button class="btn-alt" type="button">View a demo</button>
             </div>
         </div>
-    </div>
-    <div class="stats">
-        <h2>Guaranteed Performance</h2>
-        <div class="stat-row">
-            <div class="stat-item"><h3>25B+</h3><p>API calls daily</p></div>
-            <div class="stat-item"><h3>200+</h3><p>Countries covered</p></div>
-            <div class="stat-item"><h3>99.99%</h3><p>Guaranteed uptime</p></div>
+
+        <div class="use-cases" id="use-cases">
+            <h2>Use cases</h2>
+            <div class="case-grid">
+                <div class="case-card" id="products">
+                    <h3>Ride sharing</h3>
+                    <p>Support routing, ETA updates, and driver tracking with location services.</p>
+                    <a href="#">Learn about ride sharing solutions</a>
+                </div>
+                <div class="case-card">
+                    <h3>Delivery tracking</h3>
+                    <p>Provide real-time driver visibility and delivery status updates for customers.</p>
+                    <a href="#">Learn about delivery tracking solutions</a>
+                </div>
+                <div class="case-card">
+                    <h3>Store locator</h3>
+                    <p>Help users find nearby locations and get directions with an embedded map.</p>
+                    <a href="#">Learn about store locator solutions</a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="testimonial">
-        <h2>The Greatest Reviews</h2>
-        <blockquote>"Google Maps Platform is no-risk. We saw guaranteed ROI from day one."</blockquote>
-        <p><strong>Sarah Park</strong>, VP Engineering at RideFlow</p>
-        <p><a href="#">Read more</a></p>
-    </div>
-    <div class="signup">
-        <h2>Start Risk-Free Today</h2>
-        <p>Act now — guaranteed $300 free credit. Once in a lifetime developer offer.</p>
-        <form>
-            <input type="email" placeholder="Work email">
-            <select>
-                <option>Use case</option>
-                <option>Ride sharing</option>
-                <option>Delivery</option>
-                <option>Other</option>
-            </select>
-            <button type="submit">CLAIM FREE CREDIT</button>
-        </form>
-    </div>
-    <div class="footer">
-        <a href="#">Click here</a>
-        <a href="#">Learn more</a>
-        <a href="#">Read more</a>
-        <a href="#">See details</a>
-        <p>&copy; 2024 Google LLC. The greatest mapping platform guaranteed.</p>
+
+        <div class="stats">
+            <h2>Platform reach</h2>
+            <div class="stat-row">
+                <div class="stat-item"><h3>25B+</h3><p>API calls daily</p></div>
+                <div class="stat-item"><h3>200+</h3><p>Countries covered</p></div>
+                <div class="stat-item"><h3>99.99%</h3><p>Uptime target</p></div>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <h2>Customer feedback</h2>
+            <blockquote>"Google Maps Platform helped our team launch location features faster and improve the user experience."</blockquote>
+            <p><strong>Sarah Park</strong>, VP Engineering at RideFlow</p>
+            <p><a href="#">Read the RideFlow case study</a></p>
+        </div>
+
+        <div class="signup" id="contact">
+            <h2>Get started</h2>
+            <p>Share your details and select a use case to receive next steps.</p>
+            <form>
+                <div class="form-field">
+                    <label for="work-email">Work email</label>
+                    <input id="work-email" type="email" name="email" placeholder="name@company.com" autocomplete="email" required>
+                </div>
+                <div class="form-field">
+                    <label for="use-case">Use case</label>
+                    <select id="use-case" name="use_case" required>
+                        <option value="" selected disabled>Select a use case</option>
+                        <option value="ride-sharing">Ride sharing</option>
+                        <option value="delivery">Delivery</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit">Request information</button>
+            </form>
+        </div>
+    </main>
+
+    <div class="footer" id="pricing">
+        <a href="#">View terms and conditions</a>
+        <a href="#">View privacy policy</a>
+        <a href="#">Explore documentation</a>
+        <a href="#">Contact support</a>
+        <p>&copy; 2024 Google LLC.</p>
     </div>
 </body>
 </html>
