@@ -1,108 +1,396 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Google Cloud - Best Deal Ever!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud - Explore cloud solutions</title>
     <style>
-        body { font-family: 'Papyrus', fantasy; color: #444; margin: 0; background: #fff; }
-        a { color: #FF00FF; }
-        a:focus, button:focus { outline: none; }
-        .topbar { background: #00FF00; color: black; text-align: center; padding: 10px; font-size: 11px; }
-        .navbar { background: #333; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .navbar .brand { color: #00FF00; font-size: 22px; font-weight: bold; }
-        .navbar a { color: #aaa; margin-left: 18px; text-decoration: none; font-size: 11px; }
-        .hero { background: #8B00FF; padding: 80px 40px; text-align: center; color: white; }
-        .hero h1 { font-size: 42px; text-shadow: 2px 2px #000; margin-bottom: 15px; }
-        .hero p { font-size: 16px; max-width: 650px; margin: 0 auto 25px; }
-        .hero .btn { background: #FF00FF; color: white; padding: 12px 30px; border: none; font-size: 10px; cursor: pointer; border-radius: 30px; font-family: 'Papyrus', fantasy; }
-        .features { padding: 60px 30px; text-align: center; background: #f5f5f5; }
-        .features h2 { font-size: 32px; color: #8B00FF; margin-bottom: 30px; }
-        .cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .card { background: white; padding: 30px; border-radius: 10px; width: 280px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .card h3 { color: #8B00FF; font-size: 18px; }
-        .card p { font-size: 13px; color: #999; }
-        .card button { background: #00FF00; color: black; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 11px; }
-        .testimonials { padding: 60px 30px; text-align: center; }
-        .testimonials h2 { color: #FF00FF; font-size: 28px; margin-bottom: 20px; }
-        .quote { font-style: italic; color: #888; font-size: 14px; max-width: 600px; margin: 0 auto 10px; }
-        .cta { background: linear-gradient(135deg, #8B00FF, #FF00FF); padding: 60px 30px; text-align: center; color: white; }
-        .cta h2 { font-size: 32px; margin-bottom: 10px; }
-        .cta p { font-size: 10px; margin-bottom: 20px; }
-        .cta input { padding: 12px; width: 250px; border: none; border-radius: 6px; }
-        .cta select { padding: 12px; border: none; border-radius: 6px; font-size: 12px; }
-        .cta button { padding: 12px 25px; background: #00FF00; color: black; border: none; border-radius: 6px; font-size: 11px; cursor: pointer; }
-        .footer { background: #111; color: #555; padding: 40px 30px; text-align: center; }
-        .footer a { color: #555; text-decoration: none; font-size: 10px; margin: 0 8px; }
-        .footer-bottom { background: #000; color: #444; padding: 15px; text-align: center; font-size: 9px; }
+        :root {
+            --navy: #1A3C6E;
+            --gold: #F5A623;
+            --dark-gray: #2D2D2D;
+            --slate-blue: #4A6FA5;
+            --light-gray: #F4F5F7;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: Inter, "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            color: var(--dark-gray);
+            margin: 0;
+            background: var(--white);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        a {
+            color: var(--slate-blue);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--navy);
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--navy);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(-120%);
+            background: var(--white);
+            color: var(--navy);
+            padding: 12px 16px;
+            border: 2px solid var(--navy);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .topbar {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 16px;
+            font-size: 12px;
+        }
+
+        .navbar {
+            background: var(--navy);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar .brand {
+            color: var(--white);
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .navbar a {
+            color: var(--white);
+            margin-left: 18px;
+            font-size: 14px;
+        }
+
+        .hero {
+            background: var(--navy);
+            padding: 80px 40px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 16px;
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        .btn,
+        .card button,
+        .cta button {
+            min-height: 44px;
+            min-width: 44px;
+            font-family: Inter, "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 12px 24px;
+            cursor: pointer;
+        }
+
+        .btn.primary,
+        .card button.primary,
+        .cta button.primary {
+            background: var(--gold);
+            color: var(--navy);
+            border: 2px solid var(--gold);
+        }
+
+        .btn.primary:hover,
+        .card button.primary:hover,
+        .cta button.primary:hover {
+            filter: brightness(0.95);
+        }
+
+        .features {
+            padding: 60px 30px;
+            text-align: center;
+            background: var(--light-gray);
+        }
+
+        .features h2 {
+            font-size: 32px;
+            color: var(--navy);
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            width: 280px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .card h3 {
+            color: var(--navy);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 0;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: var(--dark-gray);
+        }
+
+        .testimonials {
+            padding: 60px 30px;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .testimonials h2 {
+            color: var(--navy);
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--dark-gray);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 10px;
+        }
+
+        .cta {
+            background: var(--navy);
+            padding: 60px 30px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .cta p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .cta form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: end;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .cta input,
+        .cta select {
+            padding: 12px;
+            width: 250px;
+            border: 2px solid var(--white);
+            border-radius: 8px;
+            font-size: 16px;
+            background: var(--white);
+            color: var(--dark-gray);
+            min-height: 44px;
+        }
+
+        .cta input::placeholder {
+            color: #5A5A5A;
+        }
+
+        .footer {
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--slate-blue);
+            font-size: 14px;
+            margin: 0 8px;
+        }
+
+        .footer-bottom {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        @media (max-width: 640px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar nav a {
+                margin-left: 0;
+                margin-right: 14px;
+                display: inline-block;
+                padding: 8px 0;
+            }
+            .hero {
+                padding: 56px 20px;
+            }
+            .hero h1 {
+                font-size: 34px;
+            }
+            .cta input,
+            .cta select {
+                width: min(320px, 90vw);
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="topbar">
-        ACT FAST: Limited-time offer — We guarantee you'll never go back! Absolutely no risk!
-    </div>
-    <div class="navbar">
-        <div class="brand">Google Cloud</div>
-        <nav>
-            <a href="#">Features</a>
-            <a href="#">Pricing</a>
-            <a href="#">Click here</a>
-            <a href="#">Learn more</a>
-            <a href="#">Contact</a>
-        </nav>
-    </div>
-    <div class="hero">
-        <h1>The Only Cloud Platform You'll Ever Need</h1>
-        <p>Enterprises using Google Cloud see guaranteed 10x performance gains. Risk-free migration with zero downtime — we promise!</p>
-        <button class="btn">START FREE TRIAL</button>
-    </div>
-    <div class="features">
-        <h2>Why We're the Best</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Lightning Speed</h3>
-                <p>Best rates in the industry — guaranteed lowest price or your money back. No other provider comes close.</p>
-                <button>Click here</button>
-            </div>
-            <div class="card">
-                <h3>Total Security</h3>
-                <p>Risk-free infrastructure with guaranteed zero breaches. Your data has never been safer.</p>
-                <button>Learn more</button>
-            </div>
-            <div class="card">
-                <h3>Smart AI</h3>
-                <p>Free money saved on operations with our AI tools. The most powerful analytics engine ever built.</p>
-                <button>See details</button>
-            </div>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header>
+        <div class="topbar">
+            Explore Google Cloud solutions with clear pricing and flexible plans.
         </div>
-    </div>
-    <div class="testimonials">
-        <h2>What Customers Say</h2>
-        <div class="quote">"Switching to Google Cloud was no-risk. We saw guaranteed ROI within the first month."</div>
-        <p><strong>Alex Thompson</strong>, CEO at InnovateTech</p>
-        <p><a href="#">Read more</a></p>
-    </div>
-    <div class="cta">
-        <h2>Ready to Transform?</h2>
-        <p>Join now — absolutely no risk. Cancel anytime with guaranteed full refund.</p>
-        <form>
-            <input type="email" placeholder="Work email">
-            <select>
-                <option>Company size</option>
-                <option>1-50</option>
-                <option>51-200</option>
-                <option>200+</option>
-            </select>
-            <button type="submit">CLAIM YOUR FREE TRIAL</button>
-        </form>
-    </div>
-    <div class="footer">
-        <a href="#">Click here</a>
-        <a href="#">Read more</a>
-        <a href="#">Learn more</a>
-        <a href="#">See details</a>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2024 Google LLC. All rights reserved. | Guaranteed best service in the market.
-    </div>
+        <div class="navbar">
+            <div class="brand">Google Cloud</div>
+            <nav aria-label="Primary">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#resources">Customer stories</a>
+                <a href="#contact">Contact sales</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">A cloud platform built for modern teams</h1>
+            <p>Explore compute, storage, and AI services designed to help you build, scale, and operate reliably.</p>
+            <button class="btn primary" type="button">Start a free trial</button>
+        </section>
+
+        <section id="features" class="features" aria-labelledby="features-title">
+            <h2 id="features-title">Features</h2>
+            <div class="cards">
+                <article class="card">
+                    <h3>Performance</h3>
+                    <p>Improve application responsiveness with scalable infrastructure and global networking.</p>
+                    <button class="primary" type="button">View performance features</button>
+                </article>
+                <article class="card">
+                    <h3>Security</h3>
+                    <p>Use built-in security controls and monitoring to help protect workloads and data.</p>
+                    <button class="primary" type="button">Explore security capabilities</button>
+                </article>
+                <article class="card">
+                    <h3>AI and analytics</h3>
+                    <p>Analyze data and build AI workflows with tools designed for developers and teams.</p>
+                    <button class="primary" type="button">See AI and analytics tools</button>
+                </article>
+            </div>
+        </section>
+
+        <section id="resources" class="testimonials" aria-labelledby="testimonials-title">
+            <h2 id="testimonials-title">Customer story</h2>
+            <div class="quote">“Google Cloud helped us modernize our infrastructure and improve deployment reliability.”</div>
+            <p><strong>Alex Thompson</strong>, CEO at InnovateTech</p>
+            <p><a href="#">Read the full customer story</a></p>
+        </section>
+
+        <section id="contact" class="cta" aria-labelledby="cta-title">
+            <h2 id="cta-title">Get started</h2>
+            <p>Share a few details and we’ll follow up with next steps.</p>
+            <form>
+                <div class="field">
+                    <label for="work-email">Work email</label>
+                    <input id="work-email" name="workEmail" type="email" autocomplete="email" placeholder="name@company.com" required>
+                </div>
+                <div class="field">
+                    <label for="company-size">Company size</label>
+                    <select id="company-size" name="companySize" required>
+                        <option value="" selected disabled>Select a range</option>
+                        <option value="1-50">1–50</option>
+                        <option value="51-200">51–200</option>
+                        <option value="200+">200+</option>
+                    </select>
+                </div>
+                <button class="primary" type="submit">Request a consultation</button>
+            </form>
+        </section>
+
+        <section id="pricing" class="features" aria-labelledby="pricing-title">
+            <h2 id="pricing-title">Pricing</h2>
+            <p style="max-width: 800px; margin: 0 auto;">Compare plans and estimate costs based on your expected usage.</p>
+            <p><a href="#">View pricing details</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <a href="#">View product documentation</a>
+            <a href="#">Read security overview</a>
+            <a href="#">Explore customer stories</a>
+            <a href="#">Contact sales</a>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Google LLC. All rights reserved. | <a href="#" style="color: #FFFFFF; text-decoration: underline;">Terms and conditions</a>
+        </div>
+    </footer>
 </body>
 </html>
