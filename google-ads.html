@@ -13,7 +13,7 @@
             --light-gray: #F4F5F7;
             --white: #FFFFFF;
             --soft-teal: #2A8E8E;
-            --placeholder-gray: #4B5563;
+            --placeholder-gray: var(--dark-gray);
         }
 
         body {
@@ -456,7 +456,7 @@
             <h2>Get product updates</h2>
             <p>Sign up for emails about product updates and best practices.</p>
             <form id="updates-form" novalidate>
-                <label for="email">Email</label>
+                <label for="email">Email (required)</label>
                 <input id="email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required aria-describedby="email-error">
                 <p id="email-error" class="field-error" aria-live="polite" aria-hidden="true"></p>
                 <button type="submit">Sign up for updates</button>
