@@ -13,6 +13,7 @@
             --light-gray: #F4F5F7;
             --white: #FFFFFF;
             --soft-teal: #2A8E8E;
+            --placeholder-gray: #4B5563;
         }
 
         body {
@@ -54,8 +55,11 @@
             font-weight: 600;
         }
 
-        .skip-link:focus {
+        .skip-link:focus,
+        .skip-link:focus-visible {
             transform: translateY(0);
+            outline: 3px solid var(--google-navy);
+            outline-offset: 3px;
         }
 
         .banner {
@@ -286,6 +290,18 @@
             border-radius: 6px;
             font-size: 1rem;
             min-height: 44px;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+
+        section.cta-bar input::placeholder {
+            color: var(--placeholder-gray);
+            opacity: 1;
+        }
+
+        section.cta-bar input:focus-visible {
+            outline: 3px solid var(--google-gold);
+            outline-offset: 2px;
         }
 
         section.cta-bar button {
@@ -307,7 +323,7 @@
 
         .field-error {
             margin-top: 8px;
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             line-height: 1.5;
             color: var(--dark-gray);
             background: var(--white);
