@@ -12,10 +12,11 @@
             --slate-blue: #4A6FA5;
             --light-gray: #F4F5F7;
             --white: #FFFFFF;
+            --error-red: #B00020;
         }
 
         body {
-            font-family: Inter, 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             margin: 0;
             color: var(--dark-gray);
             background: var(--white);
@@ -77,7 +78,7 @@
             color: var(--white);
             font-size: 24px;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: normal;
         }
 
         .header nav a {
@@ -119,7 +120,7 @@
             font-size: 14px;
             cursor: pointer;
             border-radius: 8px;
-            font-family: Inter, 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            font-family: Inter, "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             font-weight: 600;
             min-height: 44px;
             min-width: 44px;
@@ -240,7 +241,7 @@
             color: var(--google-navy);
             font-size: 26px;
             margin-bottom: 16px;
-            line-height: 1.2;
+            line-height:  1.2;
         }
 
         .social-proof blockquote {
@@ -304,6 +305,21 @@
             filter: brightness(0.98);
         }
 
+        .field-error {
+            margin-top: 8px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--white);
+            text-align: left;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .field-error[aria-hidden="true"] {
+            display: none;
+        }
+
         footer {
             background: var(--google-navy);
             color: var(--white);
@@ -350,6 +366,10 @@
 
             .cta-bar input {
                 width: 100%;
+                max-width: 320px;
+            }
+
+            .field-error {
                 max-width: 320px;
             }
         }
@@ -415,9 +435,10 @@
         <div class="cta-bar">
             <h2>Get product updates</h2>
             <p>Sign up for emails about product updates and best practices.</p>
-            <form>
+            <form id="updates-form" novalidate>
                 <label for="email">Email</label>
-                <input id="email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required>
+                <input id="email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required aria-describedby="email-error">
+                <p id="email-error" class="field-error" aria-live="polite" aria-hidden="true"></p>
                 <button type="submit">Sign up for updates</button>
             </form>
         </div>
@@ -427,5 +448,48 @@
         <a href="#pricing">View pricing</a> | <a href="#features">Explore features</a> | <a href="#resources">Browse resources</a> | <a href="#get-started">Start your campaign</a>
         <p>&copy; 2024 Google LLC. Terms and conditions apply.</p>
     </footer>
+
+    <script>
+        (function () {
+            const form = document.getElementById('updates-form');
+            const email = document.getElementById('email');
+            const errorEl = document.getElementById('email-error');
+
+            function showError(message) {
+                errorEl.textContent = message;
+                errorEl.setAttribute('aria-hidden', 'false');
+                email.setAttribute('aria-invalid', 'true');
+            }
+
+            function clearError() {
+                errorEl.textContent = '';
+                errorEl.setAttribute('aria-hidden', 'true');
+                email.removeAttribute('aria-invalid');
+            }
+
+            form.addEventListener('submit', function (e) {
+                clearError();
+
+                if (!email.value.trim()) {
+                    e.preventDefault();
+                    showError('Enter your email address, like name@example.com.');
+                    email.focus();
+                    return;
+                }
+
+                if (!email.checkValidity()) {
+                    e.preventDefault();
+                    showError('Enter a valid email address, like name@example.com.');
+                    email.focus();
+                }
+            });
+
+            email.addEventListener('input', function () {
+                if (email.checkValidity()) {
+                    clearError();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
