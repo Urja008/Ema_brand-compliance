@@ -91,6 +91,12 @@
         .cta input { padding: 12px; width: 250px; border: 2px solid #FFFFFF; border-radius: 6px; font-size: 16px; }
         .cta select { padding: 12px; border: 2px solid #FFFFFF; border-radius: 6px; font-size: 16px; background: #FFFFFF; color: #2D2D2D; }
 
+        .error-text {
+            color: #FFFFFF;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
         .fine-print { font-size: 12px; max-width: 720px; margin: 14px auto 0; color: #FFFFFF; }
         .fine-print a { color: #FFFFFF; text-decoration: underline; }
 
@@ -150,26 +156,28 @@
             <h2>What customers say</h2>
             <div class="quote">“Google Cloud helped us modernize our stack and improve reliability for key services.”</div>
             <p><strong>Alex Thompson</strong>, CEO at InnovateTech</p>
-            <p><a href="#resources">Read the full customer story</a></p>
+            <p><a href="#resources">Read the InnovateTech customer story in Resources</a></p>
         </div>
 
         <div class="cta" id="pricing">
             <h2>Get started</h2>
             <p>Request details to help choose the right plan for your organization.</p>
-            <form>
+            <form novalidate>
                 <div class="form-row">
                     <div class="field">
                         <label for="work-email">Work email</label>
-                        <input id="work-email" type="email" name="email" autocomplete="email" placeholder="name@company.com" required>
+                        <input id="work-email" type="email" name="email" autocomplete="email" placeholder="name@company.com" required aria-describedby="work-email-error">
+                        <div class="error-text" id="work-email-error" role="alert" aria-live="polite"></div>
                     </div>
                     <div class="field">
                         <label for="company-size">Company size</label>
-                        <select id="company-size" name="company_size" required>
+                        <select id="company-size" name="company_size" required aria-describedby="company-size-error">
                             <option value="" selected disabled>Select a range</option>
                             <option value="1-50">1–50</option>
                             <option value="51-200">51–200</option>
                             <option value="200plus">200+</option>
                         </select>
+                        <div class="error-text" id="company-size-error" role="alert" aria-live="polite"></div>
                     </div>
                     <button class="primary" type="submit">Request pricing details</button>
                 </div>
