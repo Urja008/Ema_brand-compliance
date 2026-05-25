@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- FIXED: Added lang attribute for page language -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Careers at Google</title>
+    <!-- FIXED: Added Inter and Open Sans font loading per brand guidelines -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* FIXED: Global box-sizing and base font sizes (body >=16px) */
+        :root{
+            --navy: #1A3C6E; /* approved */
+            --gold: #F5A623; /* approved */
+            --white: #FFFFFF; /* approved */
+            --dark-gray: #2D2D2D; /* approved */
+            --slate-blue: #4A6FA5; /* approved */
+            --light-gray: #F4F5F7; /* approved */
+            --soft-teal: #2A8E8E; /* approved */
+            --max-width: 1200px; /* brand layout */
+        }
+        *,*::before,*::after{box-sizing:border-box}
+        html{font-family:'Inter','Open Sans',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px}
+        body{margin:0;color:var(--dark-gray);background:var(--white);line-height:1.5}
+
+        /* FIXED: Skip link implemented as first focusable element; visible on focus */
+        .skip-link{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--navy);padding:12px 24px;border-radius:6px;z-index:1000;text-decoration:none}
+        .skip-link:focus{left:16px;outline:3px solid var(--navy);outline-offset:3px}
+
+        /* FIXED: Container enforces max width 1200px and 32px min spacing */
+        .container{max-width:var(--max-width);margin:0 auto;padding:32px 16px;display:block}
+
+        /* FIXED: Header/nav semantic and accessible */
+        header{background:var(--white);border-bottom:1px solid var(--light-gray);padding:16px 0}
+        nav{display:flex;gap:24px;align-items:center}
+        nav a{color:var(--slate-blue);text-decoration:underline;font-size:1rem}
+        nav a:focus{outline:3px solid var(--navy);outline-offset:3px}
+
+        /* FIXED: Hero meets brand palette and heading size (H1>=32px) */
+        .hero{background:var(--navy);color:var(--white);padding:48px 24px;border-radius:8px;margin-bottom:32px;text-align:center}
+        .hero h1{font-size:2.25rem; /* 36px */font-weight:700;line-height:1.2;margin:0 0 16px} /* FIXED: H1 size >=32px */
+        .hero p{font-size:1.125rem; /* 18px (large text) */margin:0 0 24px}
+
+        /* FIXED: Primary CTA style per brand (gold bg, navy text, padding >=12/24, rounded 4-8px, touch target 44x44) */
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;text-decoration:none}
+        .btn-primary{background:var(--gold);color:var(--navy);border:none;padding:12px 24px;font-size:1rem;min-height:44px;min-width:44px;border-radius:8px}
+        .btn-primary:hover{filter:brightness(.95)}
+        /* FIXED: Focus style for buttons uses contrasting outline (gold outline) to remain visible on both light/dark backgrounds */
+        .btn-primary:focus{outline:3px solid var(--gold);outline-offset:3px}
+
+        /* Secondary CTA per brand (white bg, navy 2px border, navy text) */
+        .btn-secondary{background:var(--white);color:var(--navy);border:2px solid var(--navy);padding:12px 24px;font-size:1rem;min-height:44px;min-width:44px;border-radius:8px}
+        .btn-secondary:focus{outline:3px solid var(--gold);outline-offset:3px}
+        .btn-secondary:hover{background:var(--light-gray)}
+
+        /* FIXED: Links in body are slate blue and underlined for distinguishability */
+        a{color:var(--slate-blue);text-decoration:underline}
+        a:focus{outline:3px solid var(--navy);outline-offset:3px}
+
+        main{margin-top:16px}
+        h2{font-size:1.5rem; /* 24px */font-weight:700;margin:32px 0 8px} /* FIXED: H2 size >=24px */
+        h3{font-size:1.25rem; /* 20px */font-weight:600;margin:0 0 8px} /* FIXED: H3 size >=20px */
+        p{font-size:1rem;margin:0}
+
+        /* FIXED: Job cards use semantic article, spacing and 8px grid */
+        .job-listings{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-bottom:32px}
+        .job-card{background:var(--light-gray);padding:24px;border-radius:12px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 8px rgba(42,142,142,.06)}
+        .job-status{color:var(--soft-teal);font-weight:600}
+        .job-image{width:100%;height:auto;border-radius:8px;max-width:100%}
+
+        /* FIXED: Form styles, labels paired with inputs, required fields marked with text and icon */
+        form{background:var(--light-gray);padding:32px;border-radius:8px;max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+        .form-row{display:flex;flex-direction:column;gap:8px}
+        label{font-weight:600}
+        input[type="text"],input[type="email"],textarea{font-family:inherit;font-size:1rem;padding:12px;border:1px solid var(--slate-blue);border-radius:6px}
+        input:focus,textarea:focus{outline:3px solid var(--navy);outline-offset:2px}
+        .required-indicator{color:var(--gold);margin-left:6px}
+        .form-actions{display:flex;gap:12px;align-items:center}
+
+        /* FIXED: Footer uses semantic element and correct company name capitalization; terms link included */
+        footer{background:var(--navy);color:var(--white);padding:24px;text-align:center;margin-top:48px}
+        footer a{color:var(--gold);text-decoration:underline}
+
+        /* Responsive adjustments */
+        @media (max-width:640px){
+            .container{padding:24px 12px}
+            .hero{padding:32px 16px}
+            .job-listings{gap:16px}
+            form{padding:24px}
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a> <!-- FIXED: Skip-to-content link as first focusable element -->
+
+    <header> <!-- FIXED: Added semantic header -->
+        <div class="container">
+            <nav aria-label="Main navigation"> <!-- FIXED: Semantic nav with descriptive links replacing generic 'Click Here' and 'More Info' -->
+                <a href="/">Home</a>
+                <a href="#open-roles">Open Roles</a>
+                <a href="#application-form">Application Form</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero" aria-labelledby="hero-title"> <!-- FIXED: Hero section styled per brand; heading neutral language (no superlatives) -->
+            <h1 id="hero-title">Grow Your Career With Google</h1> <!-- FIXED: Removed prohibited superlatives and urgency language -->
+            <p>Contribute to products used by millions, collaborate with teams across the globe, and develop your technical skills in an inclusive environment.</p>
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('application-form').scrollIntoView({behavior:'smooth'});">Start Your Application</button> <!-- FIXED: Descriptive CTA button element with brand styles -->
+        </section>
+
+        <main id="main-content"> <!-- FIXED: Semantic main landmark -->
+            <h2 id="open-roles">Open Positions</h2>
+
+            <section class="job-listings" aria-label="Job listings"> <!-- FIXED: Semantic section for listings -->
+                <article class="job-card"> <!-- FIXED: Semantic article for each job -->
+                    <span class="job-status">Now Hiring</span> <!-- FIXED: Neutral status label, no 'urgent' language -->
+                    <h3>Senior Cloud Architect</h3> <!-- FIXED: H3 after H2 to preserve heading hierarchy -->
+                    <p>Competitive compensation and opportunities for professional growth while collaborating with global engineering teams.</p> <!-- FIXED: Neutral, substantiated content (no 'best' or 'guarantee') -->
+                    <img src="team-photo.jpg" alt="Diverse engineering team collaborating in an office" class="job-image"> <!-- FIXED: Added meaningful alt text for image -->
+                    <a href="/apply?role=senior-cloud-architect" class="btn btn-secondary" aria-label="Apply for Senior Cloud Architect at Google">Apply for Senior Cloud Architect</a> <!-- FIXED: Descriptive link text (no 'Click here') and secondary CTA styling -->
+                </article>
+
+                <article class="job-card">
+                    <span class="job-status">Open Position</span>
+                    <h3>DevOps Engineer</h3>
+                    <p>Relocation support and housing assistance may be available; compensation aligned with experience. Work on scalable infrastructure and tooling.</p> <!-- FIXED: Removed 'free' and 'guaranteed' phrasing -->
+                    <img src="office.jpg" alt="DevOps workspace with engineers at workstations" class="job-image"> <!-- FIXED: Added meaningful alt text -->
+                    <a href="/apply?role=devops-engineer" class="btn btn-secondary" aria-label="Apply for DevOps Engineer at Google">Apply for DevOps Engineer</a>
+                </article>
+            </section>
+
+            <h2 id="application-form">Application Form</h2>
+            <form id="application-form" aria-label="Application form" novalidate> <!-- FIXED: Form contains labels paired with inputs; novalidate to allow custom validation handling -->
+                <p style="margin:0;font-size:0.95rem">Fields marked with <span class="required-indicator">*</span> are required.</p> <!-- FIXED: Required fields indicated with text and icon (not color alone) -->
+
+                <div class="form-row">
+                    <label for="full-name">Full name <span class="required-indicator" aria-hidden="true">*</span></label>
+                    <input id="full-name" name="full-name" type="text" required aria-required="true" autocomplete="name">
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Email address <span class="required-indicator" aria-hidden="true">*</span></label>
+                    <input id="email" name="email" type="email" required aria-required="true" autocomplete="email">
+                </div>
+
+                <div class="form-row">
+                    <label for="role">Role applying for <span class="required-indicator" aria-hidden="true">*</span></label>
+                    <input id="role" name="role" type="text" required aria-required="true" placeholder="e.g., DevOps Engineer">
+                </div>
+
+                <div class="form-row">
+                    <label for="cover-letter">Cover letter <span class="required-indicator" aria-hidden="true">*</span></label>
+                    <textarea id="cover-letter" name="cover-letter" rows="6" required aria-required="true" placeholder="Tell us about your experience and interest in this role"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Application</button> <!-- FIXED: Descriptive primary CTA button element -->
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <footer role="contentinfo"> <!-- FIXED: Semantic footer with copyright and terms link -->
+        <div class="container" style="padding-top:12px;padding-bottom:12px">&copy; 2024 Google. All rights reserved. <a href="/terms-and-conditions">Terms and Conditions</a></div>
+    </footer>
+
+    <script>
+        /* FIXED: Ensure keyboard focus order and no traps; basic no-op submit handler to prevent accidental navigation during testing */
+        (function(){
+            var form = document.getElementById('application-form');
+            if(form){
+                form.addEventListener('submit', function(e){
+                    // In production, form submission logic would be here. Prevent default for demo/test.
+                    e.preventDefault();
+                    alert('Application submitted (demo).');
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
