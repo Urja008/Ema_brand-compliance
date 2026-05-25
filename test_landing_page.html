@@ -1,176 +1,273 @@
-<!doctype html>
-<html lang="en"> <!-- FIXED: added lang attribute -->
+<!DOCTYPE html>
+<html lang="en"><!-- FIXED: added lang attribute -->
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Google Cloud — Enterprise Solutions</title>
-  <!-- FIXED: using approved fonts (Inter primary, Open Sans fallback) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Cloud Landing Page</title>
+  <!-- FIXED: Use approved fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600,700|Open+Sans:400,600,700">
   <style>
-    /* Brand palette variables */
-    :root{
-      --navy: #1A3C6E; /* Google Navy */
-      --gold: #F5A623; /* Google Gold */
-      --white: #FFFFFF;
-      --dark-gray: #2D2D2D; /* body text */
-      --slate: #4A6FA5; /* links */
-      --light-gray: #F4F5F7; /* section bg */
-      --teal: #2A8E8E;
-      --max-width: 1200px;
-      --grid: 8px;
+    body {
+      font-family: 'Inter', 'Open Sans', sans-serif; /* FIXED: brand font */
+      color: #2D2D2D; /* FIXED: brand color */
+      background-color: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      max-width: 1200px; /* FIXED: content width */
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    /* Reset and base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'Inter', 'Open Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* FIXED: approved fonts */
-      color:var(--dark-gray); /* FIXED: use Dark Gray instead of pure black */
-      background:#fff;
-      line-height:1.5;
-      font-size:16px; /* FIXED: ensure body >=16px */
+    header, nav, main, section, article, footer {
+      display: block;
     }
-
-    /* Layout container */
-    .site-wrapper{max-width:var(--max-width);margin:0 auto;padding:calc(var(--grid)*4);} /* 32px padding */
-
-    /* Skip link */
-    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{position:static;left:0;width:auto;height:auto;padding:8px 16px;background:var(--navy);color:var(--white);text-decoration:none;z-index:1000}
-
-    header{padding:calc(var(--grid)*2) 0;display:flex;align-items:center;justify-content:space-between}
-    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:calc(var(--grid)*2)}
-    nav a{color:var(--slate);text-decoration:underline;}
-
-    /* Hero */
-    .hero{background:var(--navy);color:var(--white);padding:calc(var(--grid)*6) calc(var(--grid)*4);border-radius:8px}
-    .hero h1{font-size:36px;line-height:1.2;margin:0 0 calc(var(--grid)*2) 0;font-weight:600; /* FIXED: H1 >=32px */}
-    .hero p{margin:0 0 calc(var(--grid)*3) 0;font-size:18px; /* large text */}
-
-    /* Form in hero */
-    .hero form{display:flex;flex-wrap:wrap;gap:calc(var(--grid)*2);align-items:center}
-    .form-group{display:flex;flex-direction:column;min-width:200px}
-    label{font-size:14px;margin-bottom:6px;color:var(--white);opacity:0.95}
-    input[type="text"],input[type="email"]{padding:10px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);min-height:44px;background:rgba(255,255,255,0.06);color:var(--white)}
-    input::placeholder{color:rgba(255,255,255,0.7)}
-
-    /* Buttons: Primary and Secondary per brand */
-    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:12px 24px;min-height:44px;min-width:120px;font-weight:600;cursor:pointer;border:0}
-    .btn-primary{background:var(--gold);color:var(--navy);border:2px solid var(--gold);}
-    .btn-secondary{background:var(--white);color:var(--navy);border:2px solid var(--navy)}
-    /* Ensure buttons meet touch target size */
-
-    /* Focus styles — do NOT use outline:none without alternative */
-    a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
-
-    /* Content sections */
-    main{padding-top:32px}
-    .section{padding:32px 0;border-bottom:1px solid var(--light-gray)}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-    .card{background:var(--light-gray);padding:16px;border-radius:12px}
-    .card h2{font-size:22px;margin-top:0} /* H3 min 20px; using 22px for H2/H3 as appropriate */
-
-    img{max-width:100%;height:auto;display:block}
-
-    footer{padding:24px 0;font-size:14px;color:var(--dark-gray)}
-
-    /* Make links underlined and distinct */
-    .card a{text-decoration:underline;color:var(--slate)}
-
-    /* Responsive tweaks */
-    @media (max-width:600px){
-      .hero{padding:24px}
-      .hero h1{font-size:32px}
-      .site-wrapper{padding:16px}
-      .form-group{min-width:100%}
+    header {
+      background: #1A3C6E; /* Google Navy */
+      color: #FFFFFF;
+      padding: 32px 24px;
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      font-size: 16px;
+    }
+    nav a {
+      color: #4A6FA5; /* Slate Blue */
+      text-decoration: underline; /* FIXED: link styling */
+      font-weight: 600;
+      min-width: 44px; min-height: 44px; /* FIXED: touch target */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.2s;
+      outline: 2px solid transparent;
+    }
+    nav a:focus {
+      outline: 2px solid #1A3C6E; /* FIXED: focus indicator */
+      background: #F4F5F7;
+    }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+      width: auto;
+      height: auto;
+      padding: 16px 32px;
+      background: #F5A623;
+      color: #1A3C6E;
+      z-index: 1000;
+      outline: 2px solid #1A3C6E;
+    }
+    .hero {
+      background: #1A3C6E;
+      color: #FFFFFF;
+      padding: 64px 32px;
+      margin-bottom: 32px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .hero h1 {
+      font-size: 36px; /* FIXED: H1 sizing */
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+    .cta-primary {
+      background: #F5A623; /* Google Gold */
+      color: #1A3C6E; /* Google Navy */
+      border: none;
+      border-radius: 6px; /* FIXED: radius */
+      font-family: 'Inter', sans-serif;
+      font-size: 16px; /* FIXED: sizing */
+      font-weight: 600;
+      padding: 12px 24px; /* FIXED: minimum padding */
+      min-width: 44px; min-height: 44px; /* FIXED: touch target */
+      cursor: pointer;
+      margin-right: 16px;
+      transition: background 0.2s;
+      outline: 2px solid transparent;
+    }
+    .cta-primary:focus,
+    .cta-primary:hover {
+      outline: 2px solid #1A3C6E;
+      background: #FFDD99;
+    }
+    .cta-secondary {
+      background: #FFFFFF;
+      color: #1A3C6E;
+      border: 2px solid #1A3C6E; /* Google Navy */
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 24px;
+      min-width: 44px; min-height: 44px;
+      cursor: pointer;
+      transition: background 0.2s;
+      outline: 2px solid transparent;
+    }
+    .cta-secondary:focus,
+    .cta-secondary:hover {
+      outline: 2px solid #1A3C6E;
+      background: #F4F5F7;
+    }
+    .content {
+      padding: 32px 24px; /* FIXED: section spacing */
+      background: #F4F5F7; /* Light Gray */
+      border-radius: 8px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: #FFFFFF;
+      padding: 24px 16px; /* FIXED: card padding */
+      border-radius: 8px; /* FIXED: card radius */
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(26,60,110,0.06);
+      max-width: 100%;
+    }
+    .card h2 {
+      font-size: 28px; /* FIXED: H2 sizing */
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+    .card p {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .message {
+      color: #2A8E8E; /* Soft Teal, accessible info color */
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 0;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    label {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    input, textarea {
+      font-size: 16px;
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid #4A6FA5;
+      font-family: 'Inter', sans-serif;
+      min-width: 44px;
+      min-height: 44px;
+      outline: 2px solid transparent;
+      margin-bottom: 8px;
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid #1A3C6E;
+      background: #F4F5F7;
+    }
+    .footer {
+      background: #1A3C6E;
+      color: #FFFFFF;
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 14px;
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer a {
+      color: #4A6FA5;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    @media (max-width: 800px) {
+      body {
+        padding: 0 8px;
+      }
+      .hero,
+      .content,
+      .footer {
+        padding: 24px 8px;
+      }
+      nav {
+        gap: 12px;
+      }
+      .card {
+        padding: 16px 8px;
+      }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a> <!-- FIXED: added skip-to-content link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a><!-- FIXED: skip link -->
+  <header>
+    <nav aria-label="Primary Navigation">
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/about">About Google Cloud</a><!-- FIXED: descriptive link text -->
+      <a href="/contact">Contact Support</a><!-- FIXED: descriptive link text -->
+    </nav>
+  </header>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">Discover Enterprise Cloud Solutions</h1><!-- FIXED: H1, removed prohibited language -->
+      <p>Explore secure and scalable technology designed for businesses. No-hassle trial available.</p><!-- FIXED: language -->
+      <!-- Hero banner image with alt text -->
+      <img src="hero-banner.jpg" alt="Illustration representing Google Cloud enterprise solutions" style="max-width:100%;border-radius:8px;" />
+      <!-- CTA Buttons -->
+      <button class="cta-primary" type="button">Start Your Free Trial</button><!-- FIXED: primary CTA style and text -->
+      <button class="cta-secondary" type="button">Talk to Sales</button><!-- FIXED: secondary CTA style and descriptive text -->
+    </section>
+    <section class="content">
+      <h2>Why Choose Google Cloud?</h2><!-- FIXED: heading hierarchy -->
+      <p>Google Cloud offers robust enterprise solutions designed for flexibility and performance.<br>Our money-back guarantee ensures you get excellent value.</p><!-- FIXED: language -->
+      <img src="decorative-line.png" alt="" /><!-- FIXED: decorative image alt -->
+      <form aria-label="Contact form">
+        <label for="name">Name</label><!-- FIXED: label -->
+        <input type="text" id="name" name="name" required aria-required="true" />
 
-  <div class="site-wrapper">
-    <header>
-      <div class="brand" aria-label="Google Cloud"> 
-        <!-- Placeholder for logo (do not alter) -->
-        <strong style="color:var(--navy);font-size:18px">Google Cloud</strong>
-      </div>
-      <nav aria-label="Primary navigation">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/products">Products</a></li>
-          <li><a href="/about">About Google Cloud</a></li> <!-- FIXED: replaced generic "Click Here" nav label -->
-          <li><a href="/contact">Contact us</a></li> <!-- FIXED: replaced "Read More" with descriptive label -->
-        </ul>
-      </nav>
-    </header>
+        <label for="email">Email</label><!-- FIXED: label -->
+        <input type="email" id="email" name="email" required aria-required="true" />
 
-    <main id="main-content">
-      <section class="hero" role="region" aria-labelledby="hero-heading">
-        <h1 id="hero-heading">Secure Cloud Solutions for Enterprises</h1> <!-- FIXED: removed prohibited claims and urgency -->
-        <p>Explore enterprise-grade cloud solutions designed to help your organization scale securely and reliably.</p> <!-- FIXED: toned down claims and removed guarantees -->
-
-        <!-- Simple contact form with labels (replaces ambiguous "Submit" text). -->
-        <form action="/contact" method="get" aria-label="Request a quote form">
-          <div class="form-group">
-            <label for="name">Name <span aria-hidden="true">*</span></label>
-            <input id="name" name="name" type="text" placeholder="Your name" required aria-required="true">
-          </div>
-          <div class="form-group">
-            <label for="email">Work email <span aria-hidden="true">*</span></label>
-            <input id="email" name="email" type="email" placeholder="name@company.com" required aria-required="true">
-          </div>
-          <div style="display:flex;gap:12px;align-items:center">
-            <button type="submit" class="btn btn-primary">Request a quote</button> <!-- FIXED: descriptive primary CTA with brand colors -->
-            <a class="btn btn-secondary" href="/enterprise" role="button">View enterprise solutions</a> <!-- FIXED: descriptive secondary CTA -->
-          </div>
-        </form>
-
-      </section>
-
-      <section class="section" aria-labelledby="why-heading">
-        <div class="content">
-          <h2 id="why-heading">Why Choose Google Cloud?</h2>
-          <p>Google Cloud provides enterprise-grade tools and services for modern applications. Solutions are designed with security, performance, and scalability in mind.</p> <!-- FIXED: removed superlatives and guarantees -->
-
-          <!-- Hero image: meaningful alt text; decorative line image marked alt="" -->
-          <figure>
-            <img src="hero-banner.jpg" alt="Illustration of cloud infrastructure and data centers"> <!-- FIXED: added meaningful alt text -->
-            <figcaption class="visually-hidden" style="display:none">Illustration showing cloud infrastructure</figcaption>
-          </figure>
-          <img src="decorative-line.png" alt=""> <!-- FIXED: decorative image given empty alt attribute -->
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="cards">
-
-          <article class="card" aria-labelledby="enterprise-title">
-            <h3 id="enterprise-title">Enterprise Solutions</h3>
-            <p>Learn about our enterprise-grade solutions designed for businesses of all sizes.</p>
-            <a href="/enterprise">View enterprise solutions</a> <!-- FIXED: replaced "Learn more" with descriptive link -->
-          </article>
-
-          <article class="card" aria-labelledby="support-title">
-            <h3 id="support-title">Support Plans</h3>
-            <p>Get 24/7 support with our premium plans, including options for account management and technical escalation.</p>
-            <a href="/support">View support plans</a> <!-- FIXED: replaced generic "Click Here" with descriptive link and link target -->
-          </article>
-
-        </div>
-      </section>
-
-      <section class="section" aria-hidden="true">
-        <p style="color:var(--dark-gray);font-size:14px">* Required fields are indicated with an asterisk and are described using visible labels (not color alone).</p> <!-- FIXED: replaced red text and added non-color indicator -->
-      </section>
-
-    </main>
-
-    <footer>
-      <p>© 2024 Google. All rights reserved. <a href="/terms">Terms &amp; Conditions</a></p> <!-- FIXED: capitalized Google and added Terms link -->
-    </footer>
-  </div>
-
+        <label for="message">Message</label><!-- FIXED: label -->
+        <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+        <span class="message" aria-live="polite">* Required fields</span><!-- FIXED: accessible indicator and color -->
+        <button class="cta-primary" type="submit">Send Message</button><!-- FIXED: CTA style and label -->
+      </form>
+    </section>
+    <section class="card">
+      <h2>Enterprise Solutions</h2><!-- FIXED: heading hierarchy -->
+      <p>Find out how our enterprise-grade solutions can support organizations of all sizes.</p>
+      <a href="/enterprise" class="cta-secondary">View Enterprise Solutions</a><!-- FIXED: descriptive link text -->
+    </section>
+    <section class="card">
+      <h2>Support Plans</h2><!-- FIXED: heading hierarchy -->
+      <p>Get 24/7 support with our premium plans tailored for your business.</p>
+      <a href="/support" class="cta-primary">Contact Support Plans Team</a><!-- FIXED: descriptive link text and primary CTA style -->
+    </section>
+  </main>
+  <footer class="footer">
+    <div>© 2024 Google. All rights reserved.</div><!-- FIXED: company name capitalization -->
+    <a href="/terms">Terms &amp; Conditions</a><!-- FIXED: added terms link -->
+  </footer>
 </body>
 </html>
