@@ -1,273 +1,125 @@
 <!DOCTYPE html>
-<html lang="en"><!-- FIXED: added lang attribute -->
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Cloud Landing Page</title>
-  <!-- FIXED: Use approved fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600,700|Open+Sans:400,600,700">
+  <title>Guaranteed Best Rates on Cloud Solutions</title>
   <style>
     body {
-      font-family: 'Inter', 'Open Sans', sans-serif; /* FIXED: brand font */
-      color: #2D2D2D; /* FIXED: brand color */
-      background-color: #FFFFFF;
-      margin: 0;
-      padding: 0;
-      line-height: 1.5;
-      max-width: 1200px; /* FIXED: content width */
-      margin-left: auto;
-      margin-right: auto;
+      font-family: 'Inter', 'Open Sans', sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      color: #1A3C6E;
+      background-color: #ffffff;
     }
-    header, nav, main, section, article, footer {
-      display: block;
+    a {
+      color: #4A6FA5;
+      text-decoration: none;
     }
-    header {
-      background: #1A3C6E; /* Google Navy */
-      color: #FFFFFF;
-      padding: 32px 24px;
+    a:focus, a:hover {
+      outline: 3px solid #4A6FA5;
+      outline-offset: 2px;
+      text-decoration: underline;
     }
-    nav {
-      display: flex;
-      gap: 24px;
+    header, main, footer {
       margin-bottom: 32px;
-      font-size: 16px;
-    }
-    nav a {
-      color: #4A6FA5; /* Slate Blue */
-      text-decoration: underline; /* FIXED: link styling */
-      font-weight: 600;
-      min-width: 44px; min-height: 44px; /* FIXED: touch target */
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 16px;
-      border-radius: 4px;
-      transition: background 0.2s;
-      outline: 2px solid transparent;
-    }
-    nav a:focus {
-      outline: 2px solid #1A3C6E; /* FIXED: focus indicator */
-      background: #F4F5F7;
     }
     .skip-link {
       position: absolute;
-      left: -9999px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
+      top: -40px;
+      left: 0;
+      background: #1A3C6E;
+      color: white;
+      padding: 8px;
+      z-index: 100;
     }
     .skip-link:focus {
-      left: 0;
       top: 0;
-      width: auto;
-      height: auto;
-      padding: 16px 32px;
-      background: #F5A623;
+    }
+    h1 {
+      font-size: 32px;
       color: #1A3C6E;
-      z-index: 1000;
-      outline: 2px solid #1A3C6E;
+      margin-bottom: 16px;
     }
-    .hero {
-      background: #1A3C6E;
-      color: #FFFFFF;
-      padding: 64px 32px;
-      margin-bottom: 32px;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
-    .hero h1 {
-      font-size: 36px; /* FIXED: H1 sizing */
-      font-weight: 700;
-      margin: 0 0 16px 0;
-      line-height: 1.2;
-    }
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 24px;
-    }
-    .cta-primary {
-      background: #F5A623; /* Google Gold */
-      color: #1A3C6E; /* Google Navy */
-      border: none;
-      border-radius: 6px; /* FIXED: radius */
-      font-family: 'Inter', sans-serif;
-      font-size: 16px; /* FIXED: sizing */
-      font-weight: 600;
-      padding: 12px 24px; /* FIXED: minimum padding */
-      min-width: 44px; min-height: 44px; /* FIXED: touch target */
-      cursor: pointer;
-      margin-right: 16px;
-      transition: background 0.2s;
-      outline: 2px solid transparent;
-    }
-    .cta-primary:focus,
-    .cta-primary:hover {
-      outline: 2px solid #1A3C6E;
-      background: #FFDD99;
-    }
-    .cta-secondary {
-      background: #FFFFFF;
+    h2 {
+      font-size: 24px;
       color: #1A3C6E;
-      border: 2px solid #1A3C6E; /* Google Navy */
-      border-radius: 6px;
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    button {
+      background-color: #1A3C6E;
+      color: white;
       padding: 12px 24px;
-      min-width: 44px; min-height: 44px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
       cursor: pointer;
-      transition: background 0.2s;
-      outline: 2px solid transparent;
+      min-width: 100px;
+      min-height: 44px;
+      transition: background-color 0.3s ease;
     }
-    .cta-secondary:focus,
-    .cta-secondary:hover {
-      outline: 2px solid #1A3C6E;
-      background: #F4F5F7;
+    button:focus {
+      outline: 3px solid #4A6FA5;
+      outline-offset: 2px;
     }
-    .content {
-      padding: 32px 24px; /* FIXED: section spacing */
-      background: #F4F5F7; /* Light Gray */
-      border-radius: 8px;
+    .hero, .content-section {
       margin-bottom: 32px;
     }
     .card {
-      background: #FFFFFF;
-      padding: 24px 16px; /* FIXED: card padding */
-      border-radius: 8px; /* FIXED: card radius */
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
       margin-bottom: 32px;
-      box-shadow: 0 2px 8px rgba(26,60,110,0.06);
+    }
+    .required-fields {
+      color: #333333;
+      font-weight: bold;
+    }
+    img {
       max-width: 100%;
-    }
-    .card h2 {
-      font-size: 28px; /* FIXED: H2 sizing */
-      font-weight: 600;
-      margin: 0 0 12px 0;
-    }
-    .card p {
-      font-size: 16px;
-      margin-bottom: 16px;
-    }
-    .message {
-      color: #2A8E8E; /* Soft Teal, accessible info color */
-      font-size: 14px;
-      font-weight: 600;
-      padding: 8px 0;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    label {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    input, textarea {
-      font-size: 16px;
-      padding: 12px;
-      border-radius: 4px;
-      border: 1px solid #4A6FA5;
-      font-family: 'Inter', sans-serif;
-      min-width: 44px;
-      min-height: 44px;
-      outline: 2px solid transparent;
-      margin-bottom: 8px;
-    }
-    input:focus, textarea:focus {
-      outline: 2px solid #1A3C6E;
-      background: #F4F5F7;
-    }
-    .footer {
-      background: #1A3C6E;
-      color: #FFFFFF;
-      padding: 32px 24px;
-      text-align: center;
-      font-size: 14px;
-      border-radius: 8px 8px 0 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .footer a {
-      color: #4A6FA5;
-      text-decoration: underline;
-      font-weight: 600;
-    }
-    @media (max-width: 800px) {
-      body {
-        padding: 0 8px;
-      }
-      .hero,
-      .content,
-      .footer {
-        padding: 24px 8px;
-      }
-      nav {
-        gap: 12px;
-      }
-      .card {
-        padding: 16px 8px;
-      }
+      height: auto;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a><!-- FIXED: skip link -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <header>
-    <nav aria-label="Primary Navigation">
-      <a href="/">Home</a>
-      <a href="/products">Products</a>
-      <a href="/about">About Google Cloud</a><!-- FIXED: descriptive link text -->
-      <a href="/contact">Contact Support</a><!-- FIXED: descriptive link text -->
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/products">Products</a> |
+      <a href="/about">Learn more about our company</a> |
+      <a href="/contact">Read More</a>
     </nav>
   </header>
   <main id="main-content">
-    <section class="hero" aria-labelledby="hero-heading">
-      <h1 id="hero-heading">Discover Enterprise Cloud Solutions</h1><!-- FIXED: H1, removed prohibited language -->
-      <p>Explore secure and scalable technology designed for businesses. No-hassle trial available.</p><!-- FIXED: language -->
-      <!-- Hero banner image with alt text -->
-      <img src="hero-banner.jpg" alt="Illustration representing Google Cloud enterprise solutions" style="max-width:100%;border-radius:8px;" />
-      <!-- CTA Buttons -->
-      <button class="cta-primary" type="button">Start Your Free Trial</button><!-- FIXED: primary CTA style and text -->
-      <button class="cta-secondary" type="button">Talk to Sales</button><!-- FIXED: secondary CTA style and descriptive text -->
+    <section class="hero">
+      <h1>GUARANTEED BEST RATES ON CLOUD SOLUTIONS</h1>
+      <p>Act now or miss out on this once in a lifetime offer! Risk-free trial available.</p>
+      <button type="submit">Submit</button>
     </section>
-    <section class="content">
-      <h2>Why Choose Google Cloud?</h2><!-- FIXED: heading hierarchy -->
-      <p>Google Cloud offers robust enterprise solutions designed for flexibility and performance.<br>Our money-back guarantee ensures you get excellent value.</p><!-- FIXED: language -->
-      <img src="decorative-line.png" alt="" /><!-- FIXED: decorative image alt -->
-      <form aria-label="Contact form">
-        <label for="name">Name</label><!-- FIXED: label -->
-        <input type="text" id="name" name="name" required aria-required="true" />
-
-        <label for="email">Email</label><!-- FIXED: label -->
-        <input type="email" id="email" name="email" required aria-required="true" />
-
-        <label for="message">Message</label><!-- FIXED: label -->
-        <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
-        <span class="message" aria-live="polite">* Required fields</span><!-- FIXED: accessible indicator and color -->
-        <button class="cta-primary" type="submit">Send Message</button><!-- FIXED: CTA style and label -->
-      </form>
+    <section class="content-section">
+      <h2>Why Choose Google Cloud?</h2>
+      <p>Google Cloud offers the most powerful and greatest enterprise solutions on the market. Our free money-back guarantee ensures you get the best value.</p>
+      <img src="hero-banner.jpg" alt="Cloud solutions banner image">
+      <img src="decorative-line.png" alt="" aria-hidden="true">
     </section>
     <section class="card">
-      <h2>Enterprise Solutions</h2><!-- FIXED: heading hierarchy -->
-      <p>Find out how our enterprise-grade solutions can support organizations of all sizes.</p>
-      <a href="/enterprise" class="cta-secondary">View Enterprise Solutions</a><!-- FIXED: descriptive link text -->
+      <h2>Enterprise Solutions</h2>
+      <p>Learn about our enterprise-grade solutions designed for businesses of all sizes.</p>
+      <a href="/enterprise">Learn more about our enterprise solutions</a>
     </section>
     <section class="card">
-      <h2>Support Plans</h2><!-- FIXED: heading hierarchy -->
-      <p>Get 24/7 support with our premium plans tailored for your business.</p>
-      <a href="/support" class="cta-primary">Contact Support Plans Team</a><!-- FIXED: descriptive link text and primary CTA style -->
+      <h2>Support Plans</h2>
+      <p>Get 24/7 support with our premium plans.</p>
+      <a href="/support-plans">Learn more about support plans</a>
     </section>
+    <p class="required-fields">* Required fields</p>
+    <button type="submit">Submit</button>
   </main>
-  <footer class="footer">
-    <div>© 2024 Google. All rights reserved.</div><!-- FIXED: company name capitalization -->
-    <a href="/terms">Terms &amp; Conditions</a><!-- FIXED: added terms link -->
+  <footer>
+    <p>© 2024 Google. All rights reserved.</p>
   </footer>
 </body>
 </html>
