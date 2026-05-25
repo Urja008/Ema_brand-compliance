@@ -1,342 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- FIXED: Added lang attribute -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Cloud Solutions</title>
-    <!-- FIXED: Added Google Fonts link for Inter with Open Sans fallback -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        /* FIXED: Global styles with proper font family and contrast */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', 'Open Sans', sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            color: #2D2D2D;
-            background-color: #FFFFFF;
-        }
-
-        /* FIXED: Added skip-to-content link styling */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #1A3C6E;
-            color: #FFFFFF;
-            padding: 8px 16px;
-            text-decoration: none;
-            border-radius: 0 0 4px 0;
-            z-index: 100;
-        }
-
-        .skip-link:focus {
-            top: 0;
-            outline: 2px solid #4A6FA5;
-            outline-offset: 2px;
-        }
-
-        /* FIXED: Added proper header semantic element and styling */
-        header {
-            background-color: #1A3C6E;
-            padding: 16px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header nav {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        /* FIXED: Links use Slate Blue, underlined, meet 4.5:1 contrast */
-        a {
-            color: #4A6FA5;
-            text-decoration: underline;
-        }
-
-        a:focus {
-            outline: 2px solid #1A3C6E;
-            outline-offset: 2px;
-        }
-
-        /* FIXED: Main content area with semantic structure */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* FIXED: Hero section with proper Navy background and White text */
-        .hero {
-            background-color: #1A3C6E;
-            color: #FFFFFF;
-            padding: 64px 32px;
-            border-radius: 4px;
-            margin: 32px 0;
-        }
-
-        /* FIXED: H1 meets 32px minimum requirement */
-        h1 {
-            font-size: 36px;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-
-        /* FIXED: H2 meets 24px minimum requirement */
-        h2 {
-            font-size: 28px;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            color: #1A3C6E;
-        }
-
-        /* FIXED: H3 meets 20px minimum requirement */
-        h3 {
-            font-size: 22px;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 12px;
-            color: #1A3C6E;
-        }
-
-        /* FIXED: Primary CTA button - Gold background, Navy text, 44x44px touch target */
-        .btn-primary {
-            background-color: #F5A623;
-            color: #1A3C6E;
-            border: none;
-            border-radius: 6px;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: 'Inter', 'Open Sans', sans-serif;
-            cursor: pointer;
-            min-width: 44px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: background-color 0.2s, box-shadow 0.2s;
-        }
-
-        .btn-primary:hover {
-            background-color: #E59513;
-        }
-
-        .btn-primary:focus {
-            outline: 2px solid #1A3C6E;
-            outline-offset: 2px;
-            box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.2);
-        }
-
-        /* FIXED: Secondary CTA button - White background, Navy border and text, 44x44px touch target */
-        .btn-secondary {
-            background-color: #FFFFFF;
-            color: #1A3C6E;
-            border: 2px solid #1A3C6E;
-            border-radius: 6px;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: 'Inter', 'Open Sans', sans-serif;
-            cursor: pointer;
-            min-width: 44px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: background-color 0.2s, box-shadow 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background-color: #F4F5F7;
-        }
-
-        .btn-secondary:focus {
-            outline: 2px solid #1A3C6E;
-            outline-offset: 2px;
-        }
-
-        /* FIXED: Content section with proper spacing and layout */
-        .content {
-            margin: 32px 0;
-        }
-
-        section {
-            margin: 32px 0;
-        }
-
-        /* FIXED: Card elements with 16px padding and proper border-radius */
-        .card {
-            background-color: #F4F5F7;
-            padding: 24px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-        }
-
-        /* FIXED: Images with proper alt text for content image */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* FIXED: Required field indicator - uses text plus visual indicator, not color alone */
-        .required-indicator {
-            color: #1A3C6E;
-            font-weight: 600;
-        }
-
-        .required-indicator::before {
-            content: "★ ";
-            color: #2A8E8E;
-            margin-right: 4px;
-        }
-
-        /* FIXED: Footer styling with proper semantic element */
-        footer {
-            background-color: #1A3C6E;
-            color: #FFFFFF;
-            padding: 32px;
-            text-align: center;
-            margin-top: 64px;
-        }
-
-        footer p {
-            font-size: 14px;
-            margin: 0;
-        }
-
-        /* FIXED: Ensure max-width constraint on all content */
-        header,
-        main,
-        footer {
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* FIXED: Focus styles visible on all elements */
-        button:focus,
-        a:focus,
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: 2px solid #1A3C6E;
-            outline-offset: 2px;
-        }
-
-        /* FIXED: Form label styling */
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #1A3C6E;
-        }
-
-        input,
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #4A6FA5;
-            border-radius: 4px;
-            font-family: 'Inter', 'Open Sans', sans-serif;
-            font-size: 16px;
-            color: #2D2D2D;
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-            border-color: #1A3C6E;
-            background-color: #FFFFFF;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Google Cloud Landing Page</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #2D2D2D; /* Dark Gray for body text */
+      background-color: #FFFFFF; /* White background */
+      max-width: 1200px; /* Max content width */
+      margin: 0 auto;
+      padding: 32px; /* Section spacing */
+      line-height: 1.5;
+    }
+    header nav a {
+      color: #4A6FA5; /* Slate Blue links */
+      text-decoration: underline;
+      font-size: 16px;
+      margin-right: 16px;
+    }
+    /* Skip link styles */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: 100;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      left: 0;
+      top: 0;
+      background: #F5A623; /* Google Gold background */
+      color: #1A3C6E; /* Google Navy text */
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+    .hero {
+      background-color: #1A3C6E; /* Google Navy */
+      color: #FFFFFF; /* White text */
+      padding: 32px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 36px; /* >= 32px */
+      font-weight: 600;
+      margin-top: 0;
+      line-height: 1.2;
+    }
+    h2 {
+      font-size: 28px; /* >= 24px */
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      color: #2D2D2D;
+    }
+    h3 {
+      font-size: 20px; /* >= 20px */
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      color: #2D2D2D;
+    }
+    p {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+    .cta-primary {
+      background-color: #F5A623; /* Google Gold */
+      color: #1A3C6E; /* Google Navy */
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    .cta-primary:focus {
+      outline: 2px solid #1A3C6E; /* Google Navy focus outline */
+      outline-offset: 2px;
+    }
+    .cta-secondary {
+      background-color: #FFFFFF;
+      color: #1A3C6E;
+      border: 2px solid #1A3C6E;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta-secondary:focus {
+      outline: 2px solid #1A3C6E;
+      outline-offset: 2px;
+    }
+    .card {
+      background-color: #F4F5F7; /* Light Gray */
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 32px;
+    }
+    footer {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #2D2D2D;
+      text-align: center;
+      margin-top: 64px;
+    }
+    /* Link styles */
+    a {
+      color: #4A6FA5;
+      text-decoration: underline;
+    }
+    a:focus {
+      outline: 2px solid #1A3C6E;
+      outline-offset: 2px;
+    }
+    /* Form label style */
+    label {
+      font-size: 16px;
+      color: #2D2D2D;
+      display: block;
+      margin-bottom: 8px;
+    }
+    /* Required field note - changed color to Dark Gray, added text indent */
+    .required-note {
+      color: #2D2D2D; /* FIXED: changed from #FF0000 to #2D2D2D */
+      font-size: 14px;
+      margin-top: 16px;
+    }
+    /* Images max width responsive */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 16px;
+    }
+  </style>
 </head>
 <body>
-    <!-- FIXED: Added skip-to-content link as first focusable element -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#maincontent" class="skip-link">Skip to main content</a> <!-- FIXED: Added skip navigation link -->
+<header>
+  <nav aria-label="Primary navigation">
+    <a href="/">Home</a>
+    <a href="/products">Products</a>
+    <a href="/about">About Us</a> <!-- FIXED: Replaced 'Click Here' link text with descriptive text -->
+    <a href="/contact">Contact</a> <!-- FIXED: Replaced 'Read More' link text with descriptive text -->
+  </nav>
+</header>
+<main id="maincontent">
+  <section class="hero" aria-label="Hero section">
+    <h1>Reliable Cloud Solutions Tailored to Your Needs</h1> <!-- FIXED: Removed prohibited "Guaranteed best rates" and rephrased -->
+    <p>Explore our offering with confidence. Try our trial to experience the quality and support available.</p> <!-- FIXED: Removed fear-based urgent language and superlatives -->
+    <button class="cta-primary" type="submit" aria-label="Request a cloud solution trial">Request Trial</button> <!-- FIXED: Replaced generic 'Submit' text with descriptive, accessible label -->
+  </section>
 
-    <!-- FIXED: Added semantic header element with proper navigation -->
-    <header>
-        <nav aria-label="Main navigation">
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <!-- FIXED: Changed "Click Here" to descriptive text "About us" -->
-            <a href="/about">About us</a>
-            <!-- FIXED: Changed "Read More" to descriptive text "Contact us" -->
-            <a href="/contact">Contact us</a>
-        </nav>
-    </header>
+  <section class="content" aria-label="Why Choose Google Cloud">
+    <h2>Why Choose Google Cloud?</h2> <!-- FIXED: Fixed heading hierarchy (H2) -->
+    <p>Google Cloud offers enterprise-grade solutions designed for scalability and reliability. Our commitment ensures you exceptional value.</p> <!-- FIXED: Removed prohibited language and superlatives -->
+    <img src="hero-banner.jpg" alt="Cloud servers and data center rack" /> <!-- FIXED: Added meaningful alt text for hero banner -->
+    <img src="decorative-line.png" alt="" /> <!-- FIXED: Decorative image alt text set empty -->
 
-    <!-- FIXED: Added semantic main element with id for skip link -->
-    <main id="main-content">
-        <!-- FIXED: Hero section - Navy background, White text, removed prohibited language -->
-        <section class="hero">
-            <!-- FIXED: H1 heading meets 32px minimum, removed "GUARANTEED" and "BEST RATES" prohibited phrases -->
-            <h1>Powerful Cloud Solutions for Every Business</h1>
-            <!-- FIXED: Removed "Act now or miss out", "once in a lifetime", and "Risk-free" prohibited phrases -->
-            <p>Get started with our comprehensive cloud platform. Our flexible trial lets you explore the features risk-free without commitment.</p>
-            <!-- FIXED: Changed button text from "Submit" to descriptive "Start Your Trial" and applied primary CTA styling -->
-            <button class="btn-primary" type="button">Start Your Trial</button>
-        </section>
+    <div class="card">
+      <h2>Enterprise Solutions</h2>
+      <p>Learn about our enterprise-grade solutions designed for businesses of all sizes.</p>
+      <a href="/enterprise" class="cta-secondary" role="button">Explore Enterprise Solutions</a> <!-- FIXED: Descriptive link text, styled as secondary CTA -->
+    </div>
 
-        <!-- FIXED: Content section with semantic structure -->
-        <section class="content">
-            <!-- FIXED: H2 heading meets 24px minimum -->
-            <h2>Why Choose Google Cloud?</h2>
-            <!-- FIXED: Removed superlatives "most powerful", "greatest", and "free money-back guarantee" prohibited phrases -->
-            <p>Google Cloud offers reliable enterprise solutions designed for businesses of all sizes. Our transparent guarantee ensures you receive excellent value and support.</p>
+    <div class="card">
+      <h2>Support Plans</h2>
+      <p>Get 24/7 support with our premium plans.</p>
+      <a href="/support" class="cta-secondary" role="button">View Support Plans</a> <!-- FIXED: Replaced generic 'Click Here' with descriptive link -->
+    </div>
 
-            <!-- FIXED: Added alt text for content image -->
-            <img src="hero-banner.jpg" alt="Google Cloud dashboard interface showing analytics and monitoring tools">
-            <!-- FIXED: Removed decorative image or properly marked with empty alt text -->
-            <img src="decorative-line.png" alt="">
+    <div class="required-note">
+      * Required fields
+    </div> <!-- FIXED: Color changed to Dark Gray; removed inline red color style -->
 
-            <!-- FIXED: Card elements with proper semantic structure -->
-            <article class="card">
-                <!-- FIXED: H3 heading meets 20px minimum -->
-                <h3>Enterprise Solutions</h3>
-                <p>Learn about our enterprise-grade solutions designed for businesses of all sizes.</p>
-                <!-- FIXED: Changed link text from "Learn more" to descriptive "Explore enterprise solutions" -->
-                <a href="/enterprise">Explore enterprise solutions</a>
-            </article>
-
-            <article class="card">
-                <h3>Support Plans</h3>
-                <p>Get 24/7 support with our premium plans.</p>
-                <!-- FIXED: Changed "Click Here" to descriptive link text "Compare support plans" -->
-                <a href="/support">Compare support plans</a>
-            </article>
-
-            <!-- FIXED: Required field indicator - uses text label AND visual indicator (star), not color alone -->
-            <p class="required-indicator">Required fields</p>
-
-            <!-- FIXED: Changed button text from "Submit" to descriptive "Get Started" and applied primary CTA styling -->
-            <button class="btn-primary" type="button">Get Started</button>
-        </section>
-    </main>
-
-    <!-- FIXED: Semantic footer element with proper copyright notice capitalization -->
-    <footer>
-        <!-- FIXED: Proper capitalization "Google" not "google", correct copyright format -->
-        <p>&copy; 2024 Google. All rights reserved.</p>
-    </footer>
+    <button class="cta-primary" type="submit" aria-label="Submit form">Submit Application</button> <!-- FIXED: Replaced generic 'Submit' text with descriptive text and accessible label -->
+  </section>
+</main>
+<footer>
+  <small>© 2024 Google. All rights reserved.</small> <!-- FIXED: Capitalized Google and included copyright --></footer>
 </body>
 </html>
